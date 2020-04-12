@@ -7,7 +7,7 @@ import config from '../../data/SiteConfig';
 
 const Category = ({ pageContext, data }) => {
   const { category } = pageContext;
-  const postEdges = data.allMarkdownRemark.edges;
+  const postEdges = data.allMdx.edges;
   return (
     <Layout>
       <div className="category-container">
@@ -23,9 +23,9 @@ export default Category;
 /* eslint no-undef: "off" */
 export const pageQuery = graphql`
   query CategoryPage($category: String) {
-    allMarkdownRemark(
+    allMdx(
       limit: 1000
-      sort: { fields: [fields___date], order: DESC }
+      sort: { fields: frontmatter___date, order: DESC }
       filter: { frontmatter: { category: { eq: $category } } }
     ) {
       totalCount
@@ -33,7 +33,6 @@ export const pageQuery = graphql`
         node {
           fields {
             slug
-            date
           }
           excerpt
           timeToRead

@@ -1,5 +1,6 @@
 import React from 'react';
 import Helmet from 'react-helmet';
+import { MDXProvider } from '@mdx-js/react';
 import config from '../../data/SiteConfig';
 import './index.css';
 
@@ -10,7 +11,7 @@ const MainLayout = ({ children }) => {
         <meta name="description" content={config.siteDescription} />
         <html lang="en" />
       </Helmet>
-      {children}
+      <MDXProvider>{children}</MDXProvider>
     </div>
   );
 };

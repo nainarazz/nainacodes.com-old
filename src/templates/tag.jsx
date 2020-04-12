@@ -7,7 +7,7 @@ import config from '../../data/SiteConfig';
 
 const Tag = ({ pageContext, data }) => {
   const { tag } = pageContext;
-  const postEdges = data.allMarkdownRemark.edges;
+  const postEdges = data.allMdx.edges;
   return (
     <Layout>
       <div className="tag-container">
@@ -23,9 +23,9 @@ export default Tag;
 /* eslint no-undef: "off" */
 export const pageQuery = graphql`
   query TagPage($tag: String) {
-    allMarkdownRemark(
+    allMdx(
       limit: 1000
-      sort: { fields: [fields___date], order: DESC }
+      sort: { fields: frontmatter___date, order: DESC }
       filter: { frontmatter: { tags: { in: [$tag] } } }
     ) {
       totalCount
@@ -33,7 +33,6 @@ export const pageQuery = graphql`
         node {
           fields {
             slug
-            date
           }
           excerpt
           timeToRead

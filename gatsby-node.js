@@ -3,38 +3,23 @@
 const path = require('path');
 const _ = require('lodash');
 const moment = require('moment');
+const { createFilePath } = require("gatsby-source-filesystem")
 const siteConfig = require('./data/SiteConfig');
 
 exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions;
-  let slug;
-  if (node.internal.type === 'MarkdownRemark') {
-    const fileNode = getNode(node.parent);
-    const parsedFilePath = path.parse(fileNode.relativePath);
-    if (
-      Object.prototype.hasOwnProperty.call(node, 'frontmatter') &&
-      Object.prototype.hasOwnProperty.call(node.frontmatter, 'title')
-    ) {
-      slug = `/${_.kebabCase(node.frontmatter.title)}`;
-    } else if (parsedFilePath.name !== 'index' && parsedFilePath.dir !== '') {
-      slug = `/${parsedFilePath.dir}/${parsedFilePath.name}/`;
-    } else if (parsedFilePath.dir === '') {
-      slug = `/${parsedFilePath.name}/`;
-    } else {
-      slug = `/${parsedFilePath.dir}/`;
-    }
-
-    if (Object.prototype.hasOwnProperty.call(node, 'frontmatter')) {
-      if (Object.prototype.hasOwnProperty.call(node.frontmatter, 'slug'))
-        slug = `/${_.kebabCase(node.frontmatter.slug)}`;
-      if (Object.prototype.hasOwnProperty.call(node.frontmatter, 'date')) {
-        const date = moment(node.frontmatter.date, siteConfig.dateFromFormat);
-        if (!date.isValid) console.warn(`WARNING: Invalid date.`, node.frontmatter);
-
-        createNodeField({ node, name: 'date', value: date.toISOString() });
-      }
-    }
-    createNodeField({ node, name: 'slug', value: slug });
+  if (node.internal.type === 'Mdx') {
+    const value = createFilePath({ node, getNode })
+    createNodeField({
+      // Name of the field you are adding
+      name: "slug",
+      // Individual MDX node
+      node,
+      // Generated value based on filepath with "blog" prefix. you
+      // don't need a separating "/" before the value because
+      // createFilePath returns a path with the leading "/".
+      value: `/blog${value}`,
+    })
   }
 };
 
@@ -43,13 +28,11 @@ exports.createPages = async ({ graphql, actions }) => {
   const postPage = path.resolve('src/templates/post.jsx');
   const tagPage = path.resolve('src/templates/tag.jsx');
   const categoryPage = path.resolve('src/templates/category.jsx');
-  const listingPage = path.resolve('./src/templates/listing.jsx');
-  const landingPage = path.resolve('./src/templates/landing.jsx');
 
   // Get a full list of markdown posts
   const markdownQueryResult = await graphql(`
     {
-      allMarkdownRemark {
+      allMdx {
         edges {
           node {
             fields {
@@ -75,7 +58,7 @@ exports.createPages = async ({ graphql, actions }) => {
   const tagSet = new Set();
   const categorySet = new Set();
 
-  const postsEdges = markdownQueryResult.data.allMarkdownRemark.edges;
+  const postsEdges = markdownQueryResult.data.allMdx.edges;
 
   // Sort posts
   postsEdges.sort((postA, postB) => {
@@ -88,31 +71,6 @@ exports.createPages = async ({ graphql, actions }) => {
 
     return 0;
   });
-
-  // Paging
-  const { postsPerPage } = siteConfig;
-  if (postsPerPage) {
-    const pageCount = Math.ceil(postsEdges.length / postsPerPage);
-
-    [...Array(pageCount)].forEach((_val, pageNum) => {
-      createPage({
-        path: pageNum === 0 ? `/` : `/${pageNum + 1}/`,
-        component: listingPage,
-        context: {
-          limit: postsPerPage,
-          skip: pageNum * postsPerPage,
-          pageCount,
-          currentPageNum: pageNum + 1,
-        },
-      });
-    });
-  } else {
-    // Load the landing page instead
-    createPage({
-      path: `/`,
-      component: landingPage,
-    });
-  }
 
   // Post page creating
   postsEdges.forEach((edge, index) => {
