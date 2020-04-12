@@ -49,6 +49,7 @@
     "eslint-plugin-jsx-a11y": "^6.2.1",
     "eslint-plugin-react": "^7.19.0",
     "gh-pages": "^2.2.0",
+    "husky": "^4.2.5",
     "prettier": "^2.0.2",
     "remark-cli": "^8.0.0",
     "remark-preset-lint-recommended": "^4.0.0",
@@ -70,7 +71,7 @@
     "build:pp": "gatsby build --prefix-paths",
     "build:gh": "npm run clean && npm run build:pp && gh-pages -d public",
     "clean": "rm -rf public && rm -rf .cache",
-    "lint:js": "eslint --ext .js,.jsx .",
+    "lint:js": "eslint --fix --ext .js,.jsx .",
     "lint:md": "remark content/",
     "write-good": "write-good $(glob 'content/posts/**/*.md')",
     "format:js": "prettier '**/*.{js,jsx}' --write",
@@ -80,5 +81,10 @@
     "plugins": [
       "remark-preset-lint-recommended"
     ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint:js && npm run lint:md"
+    }
   }
 }
