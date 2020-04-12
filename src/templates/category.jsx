@@ -1,24 +1,22 @@
-import React from "react";
-import Helmet from "react-helmet";
-import { graphql } from "gatsby";
-import Layout from "../layout";
-import PostListing from "../components/PostListing/PostListing";
-import config from "../../data/SiteConfig";
+import React from 'react';
+import Helmet from 'react-helmet';
+import { graphql } from 'gatsby';
+import Layout from '../layout';
+import PostListing from '../components/PostListing/PostListing';
+import config from '../../data/SiteConfig';
 
-const Category =  ({pageContext, data }) => {
-    const { category } = pageContext;
-    const postEdges = data.allMarkdownRemark.edges;
-    return (
-      <Layout>
-        <div className="category-container">
-          <Helmet
-            title={`Posts in category "${category}" | ${config.siteTitle}`}
-          />
-          <PostListing postEdges={postEdges} />
-        </div>
-      </Layout>
-    );
-}
+const Category = ({ pageContext, data }) => {
+  const { category } = pageContext;
+  const postEdges = data.allMarkdownRemark.edges;
+  return (
+    <Layout>
+      <div className="category-container">
+        <Helmet title={`Posts in category "${category}" | ${config.siteTitle}`} />
+        <PostListing postEdges={postEdges} />
+      </div>
+    </Layout>
+  );
+};
 
 export default Category;
 

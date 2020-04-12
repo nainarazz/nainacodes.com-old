@@ -1,43 +1,43 @@
-import React from "react";
-import Helmet from "react-helmet";
-import { graphql } from "gatsby";
-import Layout from "../layout";
-import UserInfo from "../components/UserInfo/UserInfo";
-import PostTags from "../components/PostTags/PostTags";
-import SEO from "../components/SEO/SEO";
-import Footer from "../components/Footer/Footer";
-import config from "../../data/SiteConfig";
-import "./b16-tomorrow-dark.css";
-import "./post.css";
+import React from 'react';
+import Helmet from 'react-helmet';
+import { graphql } from 'gatsby';
+import Layout from '../layout';
+import UserInfo from '../components/UserInfo/UserInfo';
+import PostTags from '../components/PostTags/PostTags';
+import SEO from '../components/SEO/SEO';
+import Footer from '../components/Footer/Footer';
+import config from '../../data/SiteConfig';
+import './b16-tomorrow-dark.css';
+import './post.css';
 
 const Post = ({ data, pageContext }) => {
-    const { slug } = pageContext;
-    const postNode = data.markdownRemark;
-    const post = postNode.frontmatter;
-    if (!post.id) {
-      post.id = slug;
-    }
+  const { slug } = pageContext;
+  const postNode = data.markdownRemark;
+  const post = postNode.frontmatter;
+  if (!post.id) {
+    post.id = slug;
+  }
 
-    return (
-      <Layout>
+  return (
+    <Layout>
+      <div>
+        <Helmet>
+          <title>{`${post.title} | ${config.siteTitle}`}</title>
+        </Helmet>
+        <SEO postPath={slug} postNode={postNode} postSEO />
         <div>
-          <Helmet>
-            <title>{`${post.title} | ${config.siteTitle}`}</title>
-          </Helmet>
-          <SEO postPath={slug} postNode={postNode} postSEO />
-          <div>
-            <h1>{post.title}</h1>
-            <div dangerouslySetInnerHTML={{ __html: postNode.html }} />
-            <div className="post-meta">
-              <PostTags tags={post.tags} />
-            </div>
-            <UserInfo config={config} />
-            <Footer config={config} />
+          <h1>{post.title}</h1>
+          <div dangerouslySetInnerHTML={{ __html: postNode.html }} />
+          <div className="post-meta">
+            <PostTags tags={post.tags} />
           </div>
+          <UserInfo config={config} />
+          <Footer config={config} />
         </div>
-      </Layout>
-    );
-}
+      </div>
+    </Layout>
+  );
+};
 
 export default Post;
 

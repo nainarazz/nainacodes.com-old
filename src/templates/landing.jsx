@@ -1,25 +1,25 @@
-import React from "react";
-import Helmet from "react-helmet";
-import { graphql } from "gatsby";
-import Layout from "../layout";
-import PostListing from "../components/PostListing/PostListing";
-import SEO from "../components/SEO/SEO";
-import config from "../../data/SiteConfig";
+import React from 'react';
+import Helmet from 'react-helmet';
+import { graphql } from 'gatsby';
+import Layout from '../layout';
+import PostListing from '../components/PostListing/PostListing';
+import SEO from '../components/SEO/SEO';
+import config from '../../data/SiteConfig';
 
 const Landing = ({ data }) => {
-    const postEdges = data.allMarkdownRemark.edges;
-    return (
-      <Layout>
-        <div className="landing-container">
-          <div className="posts-container">
-            <Helmet title={config.siteTitle} />
-            <SEO />
-            <PostListing postEdges={postEdges} />
-          </div>
+  const postEdges = data.allMarkdownRemark.edges;
+  return (
+    <Layout>
+      <div className="landing-container">
+        <div className="posts-container">
+          <Helmet title={config.siteTitle} />
+          <SEO />
+          <PostListing postEdges={postEdges} />
         </div>
-      </Layout>
-    );
-}
+      </div>
+    </Layout>
+  );
+};
 
 export default Landing;
 
