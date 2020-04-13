@@ -7,8 +7,7 @@ import NavBar from '../components/navbar/navbar.component';
 import { LayoutContainer } from './index.style';
 import Footer from '../components/Footer/Footer';
 
-const MainLayout = ({ children }) => {
-  const GlobalStyle = createGlobalStyle`
+const GlobalStyle = createGlobalStyle`
   * {
     box-sizing: border-box;
   }
@@ -25,6 +24,7 @@ const MainLayout = ({ children }) => {
     
 `;
 
+const MainLayout = ({ children }) => {
   return (
     <>
       <Helmet>
