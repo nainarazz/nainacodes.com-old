@@ -1,16 +1,14 @@
 import React from 'react';
-import Layout from '../layout';
+import Layout from '../layout/index.component';
 import SEO from '../components/SEO/SEO';
 
-const AboutPage = () => {
+const HomePage = () => {
   return (
     <Layout>
-      <div className="about-container">
-        <SEO />
-        <h2>Home page</h2>
-      </div>
+      <SEO />
+      <h2>Home page</h2>
     </Layout>
   );
 };
 
-export default AboutPage;
+export default HomePage;

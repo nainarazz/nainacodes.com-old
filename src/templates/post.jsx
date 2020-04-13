@@ -2,7 +2,7 @@ import React from 'react';
 import Helmet from 'react-helmet';
 import { graphql } from 'gatsby';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
-import Layout from '../layout';
+import Layout from '../layout/index.component';
 import UserInfo from '../components/UserInfo/UserInfo';
 import PostTags from '../components/PostTags/PostTags';
 import SEO from '../components/SEO/SEO';
