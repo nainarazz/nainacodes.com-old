@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 import { Link } from 'gatsby';
 import themeColor from '../../config/theme';
+// eslint-disable-next-line import/no-named-as-default
+import media from '../../config/media';
 
 const { brand } = themeColor;
 
@@ -20,15 +22,33 @@ export const Container = styled.div`
 export const Nav = styled.div`
   display: flex;
   justify-content: space-between;
-  padding: 0 1.5rem;
+  padding-left: 1.2em;
   width: 100%;
   color: ${brand.darkShade};
   max-width: 800px;
   margin: auto;
+  ${media.tablet`padding: 0 1.2em;`}
 `;
 
 export const Logo = styled.div`
-  font-size: 1.2rem;
+  a {
+    text-decoration: none;
+  }
+
+  img {
+    height: 38px;
+    width: 38px;
+    vertical-align: middle;
+  }
+
+  span {
+    margin-left: 10px;
+    vertical-align: middle;
+    font-weight: 600;
+    display: none;
+    ${media.phablet`display: inline;`}
+  }
+
   &:hover {
     cursor: pointer;
   }
@@ -36,16 +56,12 @@ export const Logo = styled.div`
 
 export const MenuItems = styled.div`
   justify-content: space-between;
-  display: none;
-
-  @media (min-width: 768px) {
-    display: flex;
-  }
+  display: flex;
 `;
 
 export const StyledLink = styled(Link)`
   font-size: 1rem;
-  padding: 10px 20px;
+  padding: 10px 0 10px 20px;
   text-decoration: none;
   color: ${brand.darkShade};
   &:hover {

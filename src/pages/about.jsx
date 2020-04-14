@@ -1,7 +1,6 @@
 import React from 'react';
 import Helmet from 'react-helmet';
 import Layout from '../layout/index.component';
-import About from '../components/About/About';
 import config from '../../data/SiteConfig';
 
 const AboutPage = () => {
@@ -9,7 +8,7 @@ const AboutPage = () => {
     <Layout>
       <div className="about-container">
         <Helmet title={`About | ${config.siteTitle}`} />
-        <About />
+        <h1>Edit About component or pages/about.jsx to include your information.</h1>
       </div>
     </Layout>
   );

@@ -26,11 +26,12 @@ const NavBar = () => {
     <>
       <Container shouldShowShadow={shouldShowShadow} shouldHideHeader={shouldHideHeader}>
         <Nav>
-          <Link to="/">
-            <Logo>
-              <img src="/logo.svg" alt="" />
-            </Logo>
-          </Link>
+          <Logo>
+            <Link to="/">
+              <img src="/logos/logo-96.png" alt="blog logo" />
+              <span>Naina Razafindrabiby</span>
+            </Link>
+          </Logo>
           <MenuItems>
             <StyledLink to="/about">About</StyledLink>
             <StyledLink to="/blog">Blog</StyledLink>
