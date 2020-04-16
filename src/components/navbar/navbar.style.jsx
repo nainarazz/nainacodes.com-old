@@ -1,8 +1,8 @@
 import styled from 'styled-components';
-import { Link } from 'gatsby';
 import themeColor from '../../config/theme';
 // eslint-disable-next-line import/no-named-as-default
 import media from '../../config/media';
+import LinkWithActive from './linkWithActive.component';
 
 const { brand } = themeColor;
 
@@ -22,17 +22,21 @@ export const Container = styled.div`
 export const Nav = styled.div`
   display: flex;
   justify-content: space-between;
-  padding-left: 1.2em;
+  padding: 0 1.2em;
   width: 100%;
   color: ${brand.darkShade};
   max-width: 800px;
   margin: auto;
-  ${media.tablet`padding: 0 1.2em;`}
+  ${media.tablet`padding: 0 0 0 1.2em;`}
 `;
 
 export const Logo = styled.div`
   a {
     text-decoration: none;
+  }
+
+  a:active {
+    color: ${brand.darkShade};
   }
 
   img {
@@ -59,13 +63,25 @@ export const MenuItems = styled.div`
   display: flex;
 `;
 
-export const StyledLink = styled(Link)`
+export const StyledLink = styled(LinkWithActive)`
   font-size: 1rem;
-  padding: 10px 0 10px 20px;
   text-decoration: none;
   color: ${brand.darkShade};
-  &:hover {
-    cursor: pointer;
-    border-bottom: 2px solid ${brand.darkShade};
+  padding: 10px 0;
+
+  &.active {
+    span {
+      border-bottom: 2px solid ${brand.darkShade};
+      padding-bottom: 5px;
+    }
+  }
+
+  span {
+    margin-left: 20px;
+    &:hover {
+      cursor: pointer;
+      border-bottom: 2px solid ${brand.darkShade};
+      padding-bottom: 5px;
+    }
   }
 `;

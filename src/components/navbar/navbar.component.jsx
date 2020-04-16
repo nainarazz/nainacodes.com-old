@@ -33,8 +33,12 @@ const NavBar = () => {
             </Link>
           </Logo>
           <MenuItems>
-            <StyledLink to="/about">About</StyledLink>
-            <StyledLink to="/blog">Blog</StyledLink>
+            <StyledLink to="/about" activeClassName="active">
+              <span>About</span>
+            </StyledLink>
+            <StyledLink to="/blog" activeClassName="active">
+              <span>Blog</span>
+            </StyledLink>
           </MenuItems>
         </Nav>
       </Container>
