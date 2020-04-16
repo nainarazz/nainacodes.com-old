@@ -6,6 +6,11 @@ const brand = {
     darkShade: '#3c1053',
 };
 
+const color = {
+    white: '#ffffff'
+};
+
 export default {
-    brand
+    brand,
+    color
 };

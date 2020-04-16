@@ -5,7 +5,6 @@ import { MDXProvider } from '@mdx-js/react';
 import config from '../../data/SiteConfig';
 import NavBar from '../components/navbar/navbar.component';
 import { LayoutContainer } from './index.style';
-import Footer from '../components/Footer/Footer';
 
 const GlobalStyle = createGlobalStyle`
   * {
@@ -35,7 +34,6 @@ const MainLayout = ({ children }) => {
       <LayoutContainer>
         <GlobalStyle />
         <MDXProvider>{children}</MDXProvider>
-        <Footer config={config} />
       </LayoutContainer>
     </>
   );

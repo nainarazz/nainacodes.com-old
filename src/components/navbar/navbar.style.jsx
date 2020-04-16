@@ -27,7 +27,7 @@ export const Nav = styled.div`
   color: ${brand.darkShade};
   max-width: 800px;
   margin: auto;
-  ${media.tablet`padding: 0 0 0 1.2em;`}
+  ${media.desktop`padding: 0;`}
 `;
 
 export const Logo = styled.div`
