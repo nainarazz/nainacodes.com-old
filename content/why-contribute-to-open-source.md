@@ -1,10 +1,10 @@
 ---
-title: "How to create global state using React hooks in TypeScript"
-cover: ""
-date: "2020-03-18"
-category: "non-code"
+title: 'Why Contribute to Open Source'
+cover: ''
+date: '2020-03-18'
+category: 'non-code'
 tags:
-    - open source
+  - open source
 ---
 
 I believe open source has been one the best thing that has happened in software. Just imagine if open source didn’t exist. We would not have Firefox, VLC player (_my favorite video player_), VSCode, Android, Linux (_which powers the majority of servers around the world_), and many other important software we use everyday. We would have to pay a huge sum of money for most software. That sucks.
