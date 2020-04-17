@@ -12,7 +12,7 @@ const HomePage = ({ data }) => {
   return (
     <>
       <Hero />
-      <Layout>
+      <Layout withHeroHeader>
         <SEO />
         <Helmet title={`${config.siteTitle}`} />
         <h2>Latest Posts</h2>

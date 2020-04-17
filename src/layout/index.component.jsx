@@ -5,6 +5,7 @@ import { MDXProvider } from '@mdx-js/react';
 import config from '../../data/SiteConfig';
 import NavBar from '../components/navbar/navbar.component';
 import { LayoutContainer } from './index.style';
+import Footer from '../components/footer/footer.component';
 
 const GlobalStyle = createGlobalStyle`
   * {
@@ -23,7 +24,7 @@ const GlobalStyle = createGlobalStyle`
     
 `;
 
-const MainLayout = ({ children }) => {
+const MainLayout = ({ children, withHeroHeader }) => {
   return (
     <>
       <Helmet>
@@ -31,10 +32,11 @@ const MainLayout = ({ children }) => {
         <html lang="en" />
       </Helmet>
       <NavBar />
-      <LayoutContainer>
+      <LayoutContainer withHeroHeader={withHeroHeader}>
         <GlobalStyle />
         <MDXProvider>{children}</MDXProvider>
       </LayoutContainer>
+      <Footer config={config} />
     </>
   );
 };

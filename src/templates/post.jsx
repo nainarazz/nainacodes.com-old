@@ -6,7 +6,7 @@ import Layout from '../layout/index.component';
 import UserInfo from '../components/UserInfo/UserInfo';
 import PostTags from '../components/PostTags/PostTags';
 import SEO from '../components/SEO/SEO';
-import Footer from '../components/Footer/Footer';
+import Footer from '../components/footer/footer.component';
 import config from '../../data/SiteConfig';
 import './b16-tomorrow-dark.css';
 import './post.css';
