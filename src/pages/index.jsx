@@ -1,11 +1,12 @@
 import React from 'react';
 import Helmet from 'react-helmet';
-import { graphql } from 'gatsby';
+import { graphql, Link } from 'gatsby';
 import Layout from '../layout/index.component';
 import config from '../../data/SiteConfig';
 import SEO from '../components/SEO/SEO';
 import Hero from '../components/hero/hero.component';
 import PostListing from '../components/postListing/postListing.component';
+import { Header } from '../page-styles/index.style';
 
 const HomePage = ({ data }) => {
   const posts = (data.allMdx && data.allMdx.edges) || [];
@@ -15,7 +16,12 @@ const HomePage = ({ data }) => {
       <Layout withHeroHeader>
         <SEO />
         <Helmet title={`${config.siteTitle}`} />
-        <h2>Latest Posts</h2>
+        <Header>
+          <h1>
+            Latest Posts
+            <Link to="/blog">View all</Link>
+          </h1>
+        </Header>
         <PostListing postEdges={posts} />
       </Layout>
     </>

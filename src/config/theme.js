@@ -7,7 +7,8 @@ const brand = {
 };
 
 const color = {
-    white: '#ffffff'
+    white: '#ffffff',
+    lightgrey: '#ebebeb',
 };
 
 export default {
