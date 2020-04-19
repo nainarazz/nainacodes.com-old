@@ -13,6 +13,7 @@ export const Header = styled.div`
     color: ${brand.darkShade};
     display: flex;
     justify-content: space-between;
+    font-size: 1.5rem;
     ${media.desktop`justify-content: flex-start;`}
   }
 
@@ -20,7 +21,7 @@ export const Header = styled.div`
     text-decoration: none;
     font-size: 1rem;
     background: ${color.lightgrey};
-    margin: 0.25rem 0 0 2rem;
+    margin-left: 2rem;
     padding: 0.5rem 0.75rem;
     border-radius: 8px;
   }

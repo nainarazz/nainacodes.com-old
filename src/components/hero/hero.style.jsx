@@ -32,20 +32,21 @@ export const Intro = styled.div`
 
   h1 {
     margin: 0;
-    font-size: 1.5rem;
+    font-size: 1.3rem;
+    line-height: 2;
     color: ${color.white};
   }
 
   h2 {
     margin: 0;
     color: ${brand.lightShade};
-    font-size: 1.3rem;
+    font-size: 1.1rem;
   }
 
   h3 {
     margin: 0;
     color: ${brand.lightAccent};
-    font-size: 1.1rem;
+    font-size: 0.9rem;
   }
 
   ${media.phone`
@@ -59,20 +60,6 @@ export const Intro = styled.div`
 
   h3 {
     font-size: 1.3rem;
-  }
-  `}
-
-  ${media.phablet`
-  h1 {
-    font-size: 2.5rem;
-  }
-
-  h2 {
-    font-size: 2rem;
-  }
-
-  h3 {
-    font-size: 1.5rem;
   }
   `}
 

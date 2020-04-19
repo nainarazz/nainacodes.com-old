@@ -13,11 +13,11 @@ export const PostHeader = styled.div`
   padding-bottom: 15px;
 `;
 
-export const Title = styled.span`
-  font-size: 1.4em;
-`;
+export const Title = styled.span``;
 
-export const DateThumbnail = styled.div``;
+export const DateThumbnail = styled.div`
+  text-align: center;
+`;
 
 export const Day = styled.span`
   color: ${brand.darkShade};
@@ -29,12 +29,13 @@ export const Month = styled.span`
 
 export const Year = styled.div`
   color: ${brand.lightAccent};
-  letter-spacing: 2px;
-  font-size: 1.3em;
   font-weight: 600;
+  text-align: center;
+  line-height: 1;
 `;
 
 export const StyledLink = styled(Link)`
   text-decoration: none;
   color: ${brand.darkShade};
+  line-height: 1.5;
 `;

@@ -43,6 +43,7 @@ export const Logo = styled.div`
     height: 38px;
     width: 38px;
     vertical-align: middle;
+    margin-bottom: 0;
   }
 
   span {
@@ -61,13 +62,13 @@ export const Logo = styled.div`
 export const MenuItems = styled.div`
   justify-content: space-between;
   display: flex;
+  line-height: 2;
 `;
 
 export const StyledLink = styled(LinkWithActive)`
   font-size: 1rem;
   text-decoration: none;
   color: ${brand.darkShade};
-  padding: 10px 0;
 
   &.active {
     span {

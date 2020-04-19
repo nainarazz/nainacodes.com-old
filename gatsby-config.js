@@ -68,6 +68,12 @@ module.exports = {
       },
     },
     {
+      resolve: `gatsby-plugin-typography`,
+      options: {
+        pathToConfigModule: `src/config/typography`,
+      },
+    },
+    {
       resolve: 'gatsby-plugin-nprogress',
       options: {
         color: config.themeColor,
