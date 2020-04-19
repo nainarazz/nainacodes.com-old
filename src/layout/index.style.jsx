@@ -8,6 +8,6 @@ export const LayoutContainer = styled.div`
   margin-top: ${(props) => (props.withHeroHeader ? '0' : '75px')};
   max-width: 800px;
   padding: 10px 1.2em 20px;
-  min-height: ${(props) => (props.withHeroHeader ? 'calc(100vh - 500px)' : 'calc(100vh - 130px)')};
+  min-height: ${(props) => (props.withHeroHeader ? 'calc(100vh - 522px)' : 'calc(100vh - 152px)')};
   ${media.desktop`padding: 0;`}
 `;

@@ -7,9 +7,9 @@ export const StyledFooter = styled.footer`
   max-width: 800px;
   margin: auto;
   display: flex;
-  padding: 10px 1.2em 20px;
+  padding: 20px 1.2em 20px;
   flex-direction: column-reverse;
-  ${media.desktop`padding: 0;`}
+  ${media.desktop`padding: 20px 0;`}
   ${media.tablet`flex-direction: row;`}
 `;
 
