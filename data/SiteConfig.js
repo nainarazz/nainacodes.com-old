@@ -27,20 +27,25 @@ const config = {
     {
       label: 'GitHub',
       url: 'https://github.com/nainarazz',
-      iconClassName: 'fa fa-github',
+      iconUrl: '/icons/octocat.png',
     },
     {
       label: 'Twitter',
       url: 'https://twitter.com/nr_razz',
-      iconClassName: 'fa fa-twitter',
+      iconUrl: '/icons/twitter.png',
+    },
+    {
+      label: 'LinkedIn',
+      url: 'https://www.linkedin.com/in/nainarazz/',
+      iconUrl: '/icons/linkedin.png',
     },
     {
       label: 'Email',
-      url: 'mailto:nainarazz@gmail.com',
-      iconClassName: 'fa fa-envelope',
+      url: 'mailto:&#110;&#97;&#105;&#110;&#97;&#114;&#97;&#122;&#122;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;',
+      iconUrl: '/icons/gmail.png',
     },
   ],
-  copyright: 'Copyright © 2020. Naina Razafindrabiby', // Copyright string for the footer of the website and RSS feed.
+  copyright: '© 2020. Naina Razafindrabiby', // Copyright string for the footer of the website and RSS feed.
   themeColor: '#ad5389', // Used for setting manifest and progress theme colors.
   backgroundColor: '#F2ECEA', // Used for setting manifest background color.
 };

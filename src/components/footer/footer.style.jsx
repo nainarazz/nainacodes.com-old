@@ -7,15 +7,17 @@ export const StyledFooter = styled.footer`
   max-width: 800px;
   margin: auto;
   display: flex;
-  height: 60px;
   padding: 10px 1.2em 20px;
+  flex-direction: column-reverse;
   ${media.desktop`padding: 0;`}
+  ${media.tablet`flex-direction: row;`}
 `;
 
 export const NoticeContainer = styled.div`
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-content: center;
-  align-items: center;
+
+  h4 {
+    line-height: 2;
+    margin: 0;
+  }
 `;

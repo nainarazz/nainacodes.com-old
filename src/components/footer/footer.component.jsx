@@ -1,5 +1,5 @@
 import React from 'react';
-import UserLinks from '../UserLinks/UserLinks';
+import UserLinks from '../userLinks/userLinks.component';
 import { StyledFooter, NoticeContainer } from './footer.style';
 
 const Footer = ({ config }) => {
