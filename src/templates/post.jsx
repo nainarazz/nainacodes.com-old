@@ -3,10 +3,8 @@ import Helmet from 'react-helmet';
 import { graphql } from 'gatsby';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import Layout from '../layout/index.component';
-import UserInfo from '../components/UserInfo/UserInfo';
 import PostTags from '../components/PostTags/PostTags';
 import SEO from '../components/SEO/SEO';
-import Footer from '../components/footer/footer.component';
 import config from '../../data/SiteConfig';
 import './b16-tomorrow-dark.css';
 import './post.css';
@@ -21,19 +19,15 @@ const Post = ({ data, pageContext }) => {
 
   return (
     <Layout>
+      <Helmet>
+        <title>{`${post.title} | ${config.siteTitle}`}</title>
+      </Helmet>
+      <SEO postPath={slug} postNode={postNode} postSEO />
       <div>
-        <Helmet>
-          <title>{`${post.title} | ${config.siteTitle}`}</title>
-        </Helmet>
-        <SEO postPath={slug} postNode={postNode} postSEO />
-        <div>
-          <h1>{post.title}</h1>
-          <MDXRenderer>{postNode.body}</MDXRenderer>
-          <div className="post-meta">
-            <PostTags tags={post.tags} />
-          </div>
-          <UserInfo config={config} />
-          <Footer config={config} />
+        <h1>{post.title}</h1>
+        <MDXRenderer>{postNode.body}</MDXRenderer>
+        <div className="post-meta">
+          <PostTags tags={post.tags} />
         </div>
       </div>
     </Layout>

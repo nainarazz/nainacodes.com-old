@@ -6,6 +6,7 @@ import config from '../../data/SiteConfig';
 import NavBar from '../components/navbar/navbar.component';
 import { LayoutContainer } from './index.style';
 import Footer from '../components/footer/footer.component';
+import { CodeBlock } from '../components/code-block/code-block.component';
 
 const GlobalStyle = createGlobalStyle`
   * {
@@ -25,6 +26,12 @@ const GlobalStyle = createGlobalStyle`
     
 `;
 
+const components = {
+  // eslint-disable-next-line react/jsx-props-no-spreading
+  pre: (props) => <div {...props} />,
+  code: CodeBlock,
+};
+
 const MainLayout = ({ children, withHeroHeader }) => {
   return (
     <>
@@ -35,7 +42,7 @@ const MainLayout = ({ children, withHeroHeader }) => {
       <NavBar />
       <LayoutContainer withHeroHeader={withHeroHeader}>
         <GlobalStyle />
-        <MDXProvider>{children}</MDXProvider>
+        <MDXProvider components={components}>{children}</MDXProvider>
       </LayoutContainer>
       <Footer config={config} />
     </>
