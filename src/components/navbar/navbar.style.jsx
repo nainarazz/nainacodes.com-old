@@ -66,7 +66,7 @@ export const MenuItems = styled.div`
 `;
 
 export const StyledLink = styled(LinkWithActive)`
-  font-size: 1rem;
+  font-size: 0.9rem;
   text-decoration: none;
   color: ${brand.darkShade};
 

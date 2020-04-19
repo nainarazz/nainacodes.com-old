@@ -19,5 +19,6 @@ export const NoticeContainer = styled.div`
   h4 {
     line-height: 2;
     margin: 0;
+    font-size: 0.9rem;
   }
 `;
