@@ -2,17 +2,19 @@ import React from 'react';
 import Helmet from 'react-helmet';
 import { graphql } from 'gatsby';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
-import Layout from '../layout/index.component';
-import PostTags from '../components/PostTags/PostTags';
-import SEO from '../components/SEO/SEO';
-import config from '../../data/SiteConfig';
-import './b16-tomorrow-dark.css';
-import './post.css';
+import Img from 'gatsby-image';
+import Layout from '../../layout/index.component';
+import PostTags from '../../components/PostTags/PostTags';
+import SEO from '../../components/SEO/SEO';
+import config from '../../../data/SiteConfig';
+import { Title, CoverImage } from './post.style';
 
 const Post = ({ data, pageContext }) => {
   const { slug } = pageContext;
   const postNode = data.mdx;
   const post = postNode.frontmatter;
+  const coverImgFluid = post.cover.childImageSharp.fluid;
+
   if (!post.id) {
     post.id = slug;
   }
@@ -24,7 +26,11 @@ const Post = ({ data, pageContext }) => {
       </Helmet>
       <SEO postPath={slug} postNode={postNode} postSEO />
       <div>
-        <h1>{post.title}</h1>
+        <Title>{post.title}</Title>
+        <CoverImage>
+          <Img fluid={coverImgFluid} />
+          <a href={post.imgAttribution}>{post.imgAttribution}</a>
+        </CoverImage>
         <MDXRenderer>{postNode.body}</MDXRenderer>
         <div className="post-meta">
           <PostTags tags={post.tags} />
@@ -45,7 +51,14 @@ export const pageQuery = graphql`
       excerpt
       frontmatter {
         title
-        cover
+        cover {
+          childImageSharp {
+            fluid(maxWidth: 800) {
+              ...GatsbyImageSharpFluid
+            }
+          }
+        }
+        imgAttribution
         date
         category
         tags
