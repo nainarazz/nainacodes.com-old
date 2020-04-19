@@ -11,7 +11,14 @@ const color = {
     lightgrey: '#ebebeb',
 };
 
+const techColor = {
+    javascript: '#EFD937',
+    react: '#5ED4F4',
+    angular: '#D63B1D'
+};
+
 export default {
     brand,
-    color
+    color,
+    techColor
 };

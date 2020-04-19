@@ -69,8 +69,12 @@ export const Intro = styled.div`
   `}
 `;
 
-export const SocialIconContainer = styled.div`
+export const TagsContainer = styled.div`
   margin-top: 20px;
+  span {
+    margin-right: 10px;
+    font-weight: 600;
+  }
 `;
 
 export const SocialIcon = styled.a`
