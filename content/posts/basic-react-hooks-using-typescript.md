@@ -1,12 +1,13 @@
 ---
-title: "Basic React Hooks using TypeScript - useState, useEffect"
-cover: ""
-date: "2020-03-29"
-category: "code"
+title: 'Basic React Hooks using TypeScript - useState, useEffect'
+cover: '../images/fishing-hook.jpg'
+imgAttribution: 'https://unsplash.com/photos/HJhGcU_IbsQ'
+date: '2020-03-29'
+category: 'code'
 tags:
-    - react
-    - react hooks
-    - typscript
+  - react
+  - react hooks
+  - typscript
 ---
 
 React hooks are the new way of accessing React features in a React component. We can now use functions to create components that can have access to state and lifecycle methods.
@@ -32,17 +33,17 @@ Ok, let’s dive into code.
 import React, { useState } from 'react';
 
 interface Person {
-    firstName: string;
-    lastName: string;
-    age: number;
+  firstName: string;
+  lastName: string;
+  age: number;
 }
 
-const Person: React.FunctionComponent<Person> = props => {
-    const [person, setPerson] = useState<Person>({
-        firstName: props.firstName,
-        lastName: props.lastName,
-        age: props.age,
-    });
+const Person: React.FunctionComponent<Person> = (props) => {
+  const [person, setPerson] = useState<Person>({
+    firstName: props.firstName,
+    lastName: props.lastName,
+    age: props.age,
+  });
 };
 ```
 
@@ -64,9 +65,9 @@ To update the state, we use the updater function returned by the useState functi
 
 ```typescript
 setPerson({
-    firstName: 'John',
-    lastName: 'Warren',
-    age: 24,
+  firstName: 'John',
+  lastName: 'Warren',
+  age: 24,
 });
 ```
 
@@ -77,45 +78,45 @@ import React, { useState, ChangeEvent } from 'react';
 import { render } from 'react-dom';
 
 interface Person {
-    firstName: string;
-    lastName: string;
-    age: number;
+  firstName: string;
+  lastName: string;
+  age: number;
 }
 
-const Person: React.FunctionComponent<Person> = props => {
-    const [person, setPerson] = useState<Person>({
-        firstName: props.firstName,
-        lastName: props.lastName,
-        age: props.age,
+const Person: React.FunctionComponent<Person> = (props) => {
+  const [person, setPerson] = useState<Person>({
+    firstName: props.firstName,
+    lastName: props.lastName,
+    age: props.age,
+  });
+
+  const handleInput = (event: ChangeEvent<HTMLInputElement>) => {
+    const elementName = event.target.name;
+    setPerson({
+      ...person,
+      [elementName]: event.target.value,
     });
+  };
 
-    const handleInput = (event: ChangeEvent<HTMLInputElement>) => {
-        const elementName = event.target.name;
-        setPerson({
-            ...person,
-            [elementName]: event.target.value,
-        });
-    };
-
-    return (
-        <React.Fragment>
-            <div>
-                <label htmlFor="firstName">First Name</label>
-                <input name="firstName" value={person.firstName} onChange={handleInput} />
-            </div>
-            <div>
-                <label htmlFor="lastName">Last Name</label>
-                <input name="lastName" value={person.lastName} onChange={handleInput} />
-            </div>
-            <div>
-                <label htmlFor="age">age</label>
-                <input name="age" type="number" value={person.age} onChange={handleInput} />
-            </div>
-            <p>
-                My name is {person.firstName} {person.lastName}. I am {person.age}
-            </p>
-        </React.Fragment>
-    );
+  return (
+    <React.Fragment>
+      <div>
+        <label htmlFor="firstName">First Name</label>
+        <input name="firstName" value={person.firstName} onChange={handleInput} />
+      </div>
+      <div>
+        <label htmlFor="lastName">Last Name</label>
+        <input name="lastName" value={person.lastName} onChange={handleInput} />
+      </div>
+      <div>
+        <label htmlFor="age">age</label>
+        <input name="age" type="number" value={person.age} onChange={handleInput} />
+      </div>
+      <p>
+        My name is {person.firstName} {person.lastName}. I am {person.age}
+      </p>
+    </React.Fragment>
+  );
 };
 ```
 
@@ -125,14 +126,14 @@ The initial state passed as argument to useState is only used during the initial
 
 ```typescript
 const someExpensiveOperation = (): Person => {
-    // some expensive operations
-    console.log('expensive');
+  // some expensive operations
+  console.log('expensive');
 
-    return {
-        firstName: 'John',
-        lastName: 'Warren',
-        age: 24,
-    };
+  return {
+    firstName: 'John',
+    lastName: 'Warren',
+    age: 24,
+  };
 };
 
 const [person, setPerson] = useState<Person>(someExpensiveOperation());
@@ -153,37 +154,37 @@ If you have used React class lifecycle methods before, `useEffect` hook is like 
 ```typescript
 import React, { useState, useEffect, ChangeEvent } from 'react';
 
-const Person: React.FunctionComponent<Person> = props => {
-    const [person, setPerson] = useState<Person>({
-        firstName: 'John',
-        lastName: 'Warren',
-        age: 24,
+const Person: React.FunctionComponent<Person> = (props) => {
+  const [person, setPerson] = useState<Person>({
+    firstName: 'John',
+    lastName: 'Warren',
+    age: 24,
+  });
+
+  const celebrateBirthday = (event: React.MouseEvent) => {
+    setPerson({
+      ...person,
+      age: person.age + 1,
     });
+  };
 
-    const celebrateBirthday = (event: React.MouseEvent) => {
-        setPerson({
-            ...person,
-            age: person.age + 1,
-        });
-    };
+  useEffect(() => {
+    console.log('effect will run once');
+  }, []);
 
-    useEffect(() => {
-        console.log('effect will run once');
-    }, []);
+  useEffect(() => {
+    console.log('effect will always run');
+  }, []);
 
-    useEffect(() => {
-        console.log('effect will always run');
-    }, []);
+  useEffect(() => {
+    console.log('effect will run if age has changed');
+  }, [person.age]);
 
-    useEffect(() => {
-        console.log('effect will run if age has changed');
-    }, [person.age]);
-
-    return (
-        <React.Fragment>
-            <button onClick={celebrateBirthday}>Happy Birthday</button>
-        </React.Fragment>
-    );
+  return (
+    <React.Fragment>
+      <button onClick={celebrateBirthday}>Happy Birthday</button>
+    </React.Fragment>
+  );
 };
 ```
 
@@ -193,12 +194,12 @@ Sometimes we want to do some cleaning up inside the effect. For example, when we
 
 ```typescript
 useEffect(() => {
-    // subscribe to some data source
-    console.log('subscribe to some data source');
-    return () => {
-        // unsubscribe to avoid memory leak
-        console.log('this will run when the component unmounts');
-    };
+  // subscribe to some data source
+  console.log('subscribe to some data source');
+  return () => {
+    // unsubscribe to avoid memory leak
+    console.log('this will run when the component unmounts');
+  };
 });
 ```
 
@@ -210,12 +211,12 @@ Here is a simple example of custom hook. It returns the state of whether a modal
 
 ```typescript
 export const useModal = () => {
-    const [isShown, setIsShown] = useState<boolean>(false);
-    const toggle = () => setIsShown(!isShown);
-    return {
-        isShown,
-        toggle,
-    };
+  const [isShown, setIsShown] = useState<boolean>(false);
+  const toggle = () => setIsShown(!isShown);
+  return {
+    isShown,
+    toggle,
+  };
 };
 ```
 

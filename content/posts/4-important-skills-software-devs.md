@@ -1,10 +1,11 @@
 ---
-title: "4 Most Important Skills for Software Developers"
-cover: ""
-date: "2020-03-11"
-category: "non-code"
+title: '4 Most Important Skills for Software Developers'
+cover: '../images/soft-skills.jpg'
+imgAttribution: 'https://coreaxis.com/why-soft-skills-training-is-still-trending-in-2019/'
+date: '2020-03-11'
+category: 'non-code'
 tags:
-    - soft skills
+  - soft skills
 ---
 
 Last Sunday I was teaching English at my local English club and the theme that we had for the session was about job skills. What are the skills that we need today in order to be successful at our jobs?
@@ -21,8 +22,8 @@ Problem solving is a skill that can be learned and improved. After learning a pr
 
 There are plenty of resources to learn DS and Algorithms online. I usually use Udemy to learn with videos, but you can also find many other resources on the internet. I mainly code in JavaScript, and here are some of the best courses on Udemy about DS and Algorithms using JavaScript:
 
--   [Master the Coding Interview Data Structures And Algorithms by Andrei Neagoie](https://www.udemy.com/course/master-the-coding-interview-data-structures-algorithms/)
--   [JS Algoritms and Data Structures Masterclass by Colt Steele](https://www.udemy.com/course/js-algorithms-and-data-structures-masterclass/)
+- [Master the Coding Interview Data Structures And Algorithms by Andrei Neagoie](https://www.udemy.com/course/master-the-coding-interview-data-structures-algorithms/)
+- [JS Algoritms and Data Structures Masterclass by Colt Steele](https://www.udemy.com/course/js-algorithms-and-data-structures-masterclass/)
 
 There are many online platforms, like HackerRank, LeetCode, and CodeSignal, where you can practice and improve your problem solving skills.
 

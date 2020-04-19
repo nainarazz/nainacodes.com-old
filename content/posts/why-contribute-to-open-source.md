@@ -1,6 +1,7 @@
 ---
 title: 'Why Contribute to Open Source'
-cover: ''
+cover: '../images/opensource.jpg'
+imgAttribution: ''
 date: '2020-03-18'
 category: 'non-code'
 tags:

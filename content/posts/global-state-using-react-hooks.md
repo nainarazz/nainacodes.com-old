@@ -1,12 +1,13 @@
 ---
-title: "How to create global state using React hooks in TypeScript"
-cover: ""
-date: "2020-04-10"
-category: "code"
+title: 'How to create global state using React hooks in TypeScript'
+cover: '../images/fishing-hook.jpg'
+imgAttribution: 'https://unsplash.com/photos/HJhGcU_IbsQ'
+date: '2020-04-10'
+category: 'code'
 tags:
-    - react
-    - typescript
-    - react hooks
+  - react
+  - typescript
+  - react hooks
 ---
 
 In this post, I will show you how to create a global state management without using a third party library like Redux.
@@ -107,19 +108,19 @@ import { IContact } from './Contact';
 import { reducer, Action } from './reducer';
 
 export interface StateContext {
-    isAuthenticated: boolean;
-    contacts: IContact[];
+  isAuthenticated: boolean;
+  contacts: IContact[];
 }
 
 export interface Store {
-    state: StateContext;
-    dispatch?: React.Dispatch<Action>;
+  state: StateContext;
+  dispatch?: React.Dispatch<Action>;
 }
 
 const data: IContact[] = [
-    { id: 1, name: 'Ted', phone: '+1-541-754-3010', address: 'Street 1', isPrivate: true },
-    { id: 2, name: 'Ted 2', phone: '+1-541-154-8377', address: 'Street 2', isPrivate: false },
-    { id: 3, name: 'Ted 3', phone: '+1-541-763-9221', address: 'Street 3', isPrivate: false },
+  { id: 1, name: 'Ted', phone: '+1-541-754-3010', address: 'Street 1', isPrivate: true },
+  { id: 2, name: 'Ted 2', phone: '+1-541-154-8377', address: 'Street 2', isPrivate: false },
+  { id: 3, name: 'Ted 3', phone: '+1-541-763-9221', address: 'Street 3', isPrivate: false },
 ];
 
 const defaultState: StateContext = { isAuthenticated: false, contacts: data };
@@ -127,8 +128,8 @@ const myContext = React.createContext < Store > { state: defaultState };
 
 export const useStateContext = () => useContext(myContext);
 export const StateProvider = ({ children }) => {
-    const [state, dispatch] = useReducer(reducer, defaultState);
-    return <myContext.Provider value={{ state, dispatch }} children={children} />;
+  const [state, dispatch] = useReducer(reducer, defaultState);
+  return <myContext.Provider value={{ state, dispatch }} children={children} />;
 };
 ```
 
@@ -181,13 +182,13 @@ Inside **index.tsx** file:
 // ...imports above
 
 const App: React.FunctionComponent = () => {
-    return (
-        <React.Fragment>
-            <StateProvider>
-                <ContactBook />
-            </StateProvider>
-        </React.Fragment>
-    );
+  return (
+    <React.Fragment>
+      <StateProvider>
+        <ContactBook />
+      </StateProvider>
+    </React.Fragment>
+  );
 };
 ```
 
@@ -197,11 +198,11 @@ Inside **ContactBook.tsx**:
 
 ```jsx
 const ContactBook: React.FunctionComponent = ({ children }) => {
-    return (
-        <React.Fragment>
-            <ContactList />
-        </React.Fragment>
-    );
+  return (
+    <React.Fragment>
+      <ContactList />
+    </React.Fragment>
+  );
 };
 export default ContactBook;
 ```
@@ -212,48 +213,48 @@ Inside **ContactList.tsx**
 
 ```jsx
 export const ContactList: React.FunctionComponent = () => {
-    const { state, dispatch } = useStateContext();
+  const { state, dispatch } = useStateContext();
 
-    const { isAuthenticated, contacts } = state;
+  const { isAuthenticated, contacts } = state;
 
-    return (
-        <React.Fragment>
-            {contacts.map((c, i) => {
-                if (c.isPrivate && !state.isAuthenticated) {
-                    return (
-                        <div>
-                            <h2>Contact {c.name}</h2>
-                            Sorry, private data. Only for authenticated users
-                        </div>
-                    );
-                }
-
-                return (
-                    <Contact
-                        key={i}
-                        name={c.name}
-                        address={c.address}
-                        phone={c.phone}
-                        isPrivate={c.isPrivate}
-                    />
-                );
-            })}
-
-            <div style={{ marginTop: 20 }}>
-                {
-                    <button
-                        onClick={() =>
-                            dispatch({
-                                type: isAuthenticated ? ActionType.SIGN_OUT : ActionType.SIGN_IN,
-                            })
-                        }
-                    >
-                        {isAuthenticated ? 'sign out' : 'sign in'}
-                    </button>
-                }
+  return (
+    <React.Fragment>
+      {contacts.map((c, i) => {
+        if (c.isPrivate && !state.isAuthenticated) {
+          return (
+            <div>
+              <h2>Contact {c.name}</h2>
+              Sorry, private data. Only for authenticated users
             </div>
-        </React.Fragment>
-    );
+          );
+        }
+
+        return (
+          <Contact
+            key={i}
+            name={c.name}
+            address={c.address}
+            phone={c.phone}
+            isPrivate={c.isPrivate}
+          />
+        );
+      })}
+
+      <div style={{ marginTop: 20 }}>
+        {
+          <button
+            onClick={() =>
+              dispatch({
+                type: isAuthenticated ? ActionType.SIGN_OUT : ActionType.SIGN_IN,
+              })
+            }
+          >
+            {isAuthenticated ? 'sign out' : 'sign in'}
+          </button>
+        }
+      </div>
+    </React.Fragment>
+  );
 };
 ```
 
