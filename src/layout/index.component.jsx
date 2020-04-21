@@ -7,6 +7,7 @@ import NavBar from '../components/navbar/navbar.component';
 import { LayoutContainer } from './index.style';
 import Footer from '../components/footer/footer.component';
 import { CodeBlock } from '../components/code-block/code-block.component';
+import themeColor from '../config/theme';
 
 const GlobalStyle = createGlobalStyle`
   * {
@@ -16,12 +17,19 @@ const GlobalStyle = createGlobalStyle`
     body {
         margin: 0;
         padding: 0;
-        color: rgb(34, 36, 38);
+        color: ${themeColor.color.body};
     }
 
     html {
         height: 100%;
         overflow: auto;
+      }
+
+      code {
+        padding: 2px 4px;
+        background: #f4f3fa;
+        border-radius: 3px;
+        color: ${themeColor.color.body};
       }
     
 `;

@@ -9,6 +9,7 @@ const brand = {
 const color = {
     white: '#ffffff',
     lightgrey: '#ebebeb',
+    body: 'rgb(34, 36, 38)',
 };
 
 const techColor = {

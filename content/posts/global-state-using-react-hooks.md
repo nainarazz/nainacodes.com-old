@@ -100,9 +100,7 @@ In this example, we are going to create a simple contact book that will display 
 
 The examples below are in TypeScript.
 
-Inside **state.tsx**:
-
-```jsx
+```jsx filename=state.tsx linesToHighlight=21,22,23,24,25,26,27,28
 import React, { useContext, useState, useReducer } from 'react';
 import { IContact } from './Contact';
 import { reducer, Action } from './reducer';
@@ -127,47 +125,46 @@ const defaultState: StateContext = { isAuthenticated: false, contacts: data };
 const myContext = React.createContext < Store > { state: defaultState };
 
 export const useStateContext = () => useContext(myContext);
+
 export const StateProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, defaultState);
   return <myContext.Provider value={{ state, dispatch }} children={children} />;
 };
 ```
 
-In lines ---, we have created a context object called `myContext`. This object will contain our **global state** and we have initialized it with the values in the `defaultState` variable. It includes `isAuthenticated` and `contacts` (list) properties.
+In line 22, we have created a context object called `myContext`. This object will contain our **global state** and we have initialized it with the values in the `defaultState` variable. It includes `isAuthenticated` and `contacts` (list) properties.
 
-In line --- we export a function that calls `useContext` to access the data. We will use this function in our components in order to access values in our state.
+In line 24 we export a function that calls `useContext` to access the data. We will use this function in our components in order to access values in our state.
 
 At the end of the file, we export a `StateProvider` component. This component simply returns the **provider component** returned by our context object. We pass an object that has our state and dispatch function as values to our provider component. We will wrap our child components with `StateProvider` so that they will be able to get access to the values we pass.
 
 We see the `useReducer` hook in action here. What is actually in our reducer?
 
-Inside our **reducer.tsx**:
+```typescript filename=reducer.tsx linesToHighlight=11,12,13,14,15,16,17,18,19,20
+import { StateContext } from './state';
+import { IContact } from './Contact';
 
-```jsx
-import  {  StateContext  }  from  "./state";
-import  {  IContact  }  from  './Contact';
-
-export  enum  ActionType  {
-    SIGN_IN  =  'Log out',
-    SIGN_OUT  =  'Sign out'
+export enum ActionType {
+  SIGN_IN = 'Log out',
+  SIGN_OUT = 'Sign out',
 }
 
-export  type  Action  = {  type:  ActionType.SIGN_IN  } |  {  type:  ActionType.SIGN_OUT  };
+export type Action = { type: ActionType.SIGN_IN } | { type: ActionType.SIGN_OUT };
 
-export  const reducer =  (state:  StateContext, action:  Action)  =>  {
-    switch  (action.type)  {
-        case  ActionType.SIGN_IN:
-            return  {  ...state, isAuthenticated:  true}
-        case  ActionType.SIGN_OUT:
-            return  {  ...state, isAuthenticated:  false}
-        default:
-            throw  new  Error('Not among actions');
-    }
-}
+export const reducer = (state: StateContext, action: Action) => {
+  switch (action.type) {
+    case ActionType.SIGN_IN:
+      return { ...state, isAuthenticated: true };
+    case ActionType.SIGN_OUT:
+      return { ...state, isAuthenticated: false };
+    default:
+      throw new Error('Not among actions');
+  }
+};
 ```
 
-From lines ----, we do the needed imports and we also define the Action types needed by TypeScript for our reducer.
-Then in line --, we export our reducer function. We are returning a new state based on the type of actions dispatched by our components. Here I just hardcoded the values for isAuthenticated props to `true` or `false`, but you can also pass dynamic values from dispatch function (called payload) and access them in your actions.
+From lines 1-7, we do the needed imports and we also define the Action types needed by TypeScript for our reducer.
+Then in line 11, we export our reducer function. We are returning a new state based on the type of actions dispatched by our components. Here I just hardcoded the values for isAuthenticated props to `true` or `false`, but you can also pass dynamic values from dispatch function (called payload) and access them in your actions.
 Something like this:
 
 ```javascript
@@ -176,9 +173,7 @@ return { ...state, isAuthenticated: action.payload };
 
 After seeing our context providers and reducers, let us see where we call those functions.
 
-Inside **index.tsx** file:
-
-```jsx
+```jsx filename=index.tsx
 // ...imports above
 
 const App: React.FunctionComponent = () => {
@@ -194,9 +189,7 @@ const App: React.FunctionComponent = () => {
 
 This is the main component of our app. We wrap the `ContactBook` component with our `StateProvider` (remember in our state.tsx file we export this function?) By wrapping our components with `StateProvider`, we are able to access our global store.
 
-Inside **ContactBook.tsx**:
-
-```jsx
+```jsx filename=ContactBook.tsx
 const ContactBook: React.FunctionComponent = ({ children }) => {
   return (
     <React.Fragment>
@@ -209,9 +202,7 @@ export default ContactBook;
 
 We are returning `ContactList` that contains lists of our contacts.
 
-Inside **ContactList.tsx**
-
-```jsx
+```jsx filename=ContactList.tsx linesToHighlight=2,33,34,35
 export const ContactList: React.FunctionComponent = () => {
   const { state, dispatch } = useStateContext();
 
@@ -258,13 +249,13 @@ export const ContactList: React.FunctionComponent = () => {
 };
 ```
 
-In line xxx, we get values from our store using the `useStateContext` function we have exported in state.tsx file. This function returns our global state and dispatch function.
+In line 2, we get values from our store using the `useStateContext` function we have exported in state.tsx file. This function returns our global state and dispatch function.
 
 This is actually where the magic happens. We didn't have to pass any props down until this component to access our list of contacts and to know whether we are authenticated or not. We simply accessed those values from our store using the `useContext` hook.
 
 In the following lines, we simply loop through the list of contacts and display a `<Contact />` component. There is some little logic here that when the contact is private and user is not authenticated, then the user should not be able to see the contact information.
 
-Finally, in line xxx, we have a button that is responsible for updating our `isAuthenticated` state. If the user is already authenticated, then it will dispatch `SIGN_OUT` action, otherwise it will dispatch `SIGN_IN` action. When we click on this button, we will see that the state is updated depending on the current state. If the user was previously not authenticated, the user will now be authenticated after clicking, and the private contact information will be shown as well. Our view is updated because our state is also updated.
+Finally, in lines 33-35, we have a button that is responsible for updating our `isAuthenticated` state. If the user is already authenticated, then it will dispatch `SIGN_OUT` action, otherwise it will dispatch `SIGN_IN` action. When we click on this button, we will see that the state is updated depending on the current state. If the user was previously not authenticated, the user will now be authenticated after clicking, and the private contact information will be shown as well. Our view is updated because our state is also updated.
 
 ## Wrapping up
 
