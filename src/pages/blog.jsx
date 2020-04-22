@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Helmet from 'react-helmet';
 import { graphql } from 'gatsby';
 import Layout from '../layout/index.component';
@@ -7,15 +7,25 @@ import PostListing from '../components/postListing/postListing.component';
 import { SearchContainer, Search, FilterCount } from '../page-styles/blog.style';
 
 const BlogPage = ({ data }) => {
-  const posts = (data.allMdx && data.allMdx.edges) || [];
+  const edges = (data.allMdx && data.allMdx.edges) || [];
+  const [posts, setPosts] = useState(edges);
+
+  const handleSearch = (e) => {
+    const searchValue = e.target.value;
+    const filteredPosts = edges.filter((p) =>
+      p.node.frontmatter.title.toLowerCase().includes(searchValue.toLowerCase())
+    );
+    setPosts(filteredPosts);
+  };
+
   return (
     <Layout>
       <div>
         <Helmet title={`Blog | ${config.siteTitle}`} />
         <h1>Articles</h1>
         <SearchContainer>
-          <Search type="text" placeholder="type to search blog posts" />
-          <FilterCount>10</FilterCount>
+          <Search type="text" placeholder="type to search blog posts" onChange={handleSearch} />
+          <FilterCount>{posts.length}</FilterCount>
         </SearchContainer>
         <PostListing postEdges={posts} />
       </div>
