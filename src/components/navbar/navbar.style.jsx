@@ -4,7 +4,7 @@ import themeColor from '../../config/theme';
 import media from '../../config/media';
 import LinkWithActive from './link-with-active.component';
 
-const { brand } = themeColor;
+const { brand, color } = themeColor;
 
 export const Container = styled.div`
   position: fixed;
@@ -33,10 +33,12 @@ export const Nav = styled.div`
 export const Logo = styled.div`
   a {
     text-decoration: none;
+    color: ${color.purple};
   }
 
-  a:active {
-    color: ${brand.darkShade};
+  a:active,
+  a:visited {
+    color: ${color.purple};
   }
 
   img {
@@ -51,7 +53,7 @@ export const Logo = styled.div`
     vertical-align: middle;
     font-weight: 600;
     display: none;
-    ${media.phablet`display: inline;`}
+    ${media.tablet`display: inline;`}
   }
 
   &:hover {
@@ -69,19 +71,19 @@ export const StyledLink = styled(LinkWithActive)`
   font-size: 0.9rem;
   text-decoration: none;
   color: ${brand.darkShade};
+  margin-left: 30px;
 
   &.active {
     span {
-      border-bottom: 2px solid ${brand.darkShade};
+      border-bottom: 5px solid ${brand.darkShade};
       padding-bottom: 5px;
     }
   }
 
   span {
-    margin-left: 20px;
     &:hover {
       cursor: pointer;
-      border-bottom: 2px solid ${brand.darkShade};
+      border-bottom: 5px solid ${brand.darkShade};
       padding-bottom: 5px;
     }
   }

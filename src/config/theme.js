@@ -9,6 +9,7 @@ const brand = {
 const color = {
     white: '#ffffff',
     lightgrey: '#ebebeb',
+    purple: '#950451',
     body: 'rgb(34, 36, 38)',
 };
 
