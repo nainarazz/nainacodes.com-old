@@ -5,7 +5,7 @@ import Layout from '../layout/index.component';
 import config from '../../data/SiteConfig';
 import SEO from '../components/SEO/SEO';
 import Hero from '../components/hero/hero.component';
-import PostListing from '../components/postListing/postListing.component';
+import PostListing from '../components/post-listing/post-listing.component';
 import { Header } from '../page-styles/index.style';
 
 const HomePage = ({ data }) => {

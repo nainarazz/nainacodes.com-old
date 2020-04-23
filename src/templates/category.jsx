@@ -2,7 +2,7 @@ import React from 'react';
 import Helmet from 'react-helmet';
 import { graphql } from 'gatsby';
 import Layout from '../layout/index.component';
-import PostListing from '../components/postListing/postListing.component';
+import PostListing from '../components/post-listing/post-listing.component';
 import config from '../../data/SiteConfig';
 
 const Category = ({ pageContext, data }) => {

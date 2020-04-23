@@ -1,5 +1,5 @@
 import React from 'react';
-import { UserLinksContainer } from './userLinks.style';
+import { UserLinksContainer } from './user-links.style';
 
 const UserLinks = ({ config }) => {
   const { userLinks } = config;

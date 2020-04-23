@@ -7,7 +7,7 @@ import {
   Month,
   Day,
   Year,
-} from './postListing.style';
+} from './post-listing.style';
 
 const monthDictionary = {
   0: 'Jan',

@@ -4,7 +4,7 @@ import { graphql } from 'gatsby';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import Img from 'gatsby-image';
 import Layout from '../../layout/index.component';
-import PostTags from '../../components/PostTags/PostTags';
+import PostTags from '../../components/post-tags/post-tags.component';
 import SEO from '../../components/SEO/SEO';
 import config from '../../../data/SiteConfig';
 import { Title, CoverImage } from './post.style';

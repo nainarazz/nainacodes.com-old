@@ -6,7 +6,7 @@ import InfiniteScroll from 'react-infinite-scroll-component';
 import Layout from '../layout/index.component';
 import config from '../../data/SiteConfig';
 import theme from '../config/theme';
-import PostListing from '../components/postListing/postListing.component';
+import PostListing from '../components/post-listing/post-listing.component';
 import { SearchContainer, Search, FilterCount } from '../page-styles/blog.style';
 
 const Loader = styled.div`

@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import themeColor from '../../config/theme';
 // eslint-disable-next-line import/no-named-as-default
 import media from '../../config/media';
-import LinkWithActive from './linkWithActive.component';
+import LinkWithActive from './link-with-active.component';
 
 const { brand } = themeColor;
 
