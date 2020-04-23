@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-one-expression-per-line */
 import React from 'react';
 import Helmet from 'react-helmet';
 import { graphql } from 'gatsby';
@@ -12,6 +13,11 @@ const Tag = ({ pageContext, data }) => {
     <Layout>
       <div className="tag-container">
         <Helmet title={`Posts tagged as "${tag}" | ${config.siteTitle}`} />
+        <h1>
+          Tags{' '}
+          <span style={{ fontSize: '0.9rem', marginLeft: '1rem', fontStyle: 'italic' }}>{tag}</span>
+        </h1>
+
         <PostListing postEdges={postEdges} />
       </div>
     </Layout>

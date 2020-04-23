@@ -1,3 +1,5 @@
+/* eslint-disable react/jsx-one-expression-per-line */
+/* eslint-disable react/self-closing-comp */
 import React from 'react';
 import Helmet from 'react-helmet';
 import { graphql } from 'gatsby';
@@ -12,6 +14,12 @@ const Category = ({ pageContext, data }) => {
     <Layout>
       <div className="category-container">
         <Helmet title={`Posts in category "${category}" | ${config.siteTitle}`} />
+        <h1>
+          Category{' '}
+          <span style={{ fontSize: '0.9rem', marginLeft: '1rem', fontStyle: 'italic' }}>
+            {category}
+          </span>
+        </h1>
         <PostListing postEdges={postEdges} />
       </div>
     </Layout>
