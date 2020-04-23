@@ -39,6 +39,9 @@ const NavBar = () => {
             <StyledLink to="/blog" activeClassName="active">
               <span>Blog</span>
             </StyledLink>
+            <StyledLink to="/contact" activeClassName="active">
+              <span>Contact</span>
+            </StyledLink>
           </MenuItems>
         </Nav>
       </Container>
