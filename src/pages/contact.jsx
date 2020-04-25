@@ -11,7 +11,7 @@ export const Contact = () => {
     <Layout>
       <h1 style={{ marginBottom: '0.5rem', color: color.red }}>Don&apos;t be a stranger,</h1>
       <h2 style={{ margin: '0 0 3rem' }}>just say hello 👋</h2>
-      <p style={{ marginBottom: '5px' }}>
+      <p>
         If you want to share some of your thoughts with me, or simply wanna talk, feel free to do
         so.
       </p>
