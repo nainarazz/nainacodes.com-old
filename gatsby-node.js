@@ -4,7 +4,7 @@ const path = require('path');
 const _ = require('lodash');
 const moment = require('moment');
 const { createFilePath } = require("gatsby-source-filesystem")
-const siteConfig = require('./data/SiteConfig');
+const siteConfig = require('./data/site-config');
 
 exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions;

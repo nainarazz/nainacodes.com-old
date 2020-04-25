@@ -6,7 +6,7 @@ import Img from 'gatsby-image';
 import Layout from '../../layout/index.component';
 import PostTags from '../../components/post-tags/post-tags.component';
 import SEO from '../../components/SEO/SEO';
-import config from '../../../data/SiteConfig';
+import config from '../../../data/site-config';
 import { Title, CoverImage } from './post.style';
 
 const Post = ({ data, pageContext }) => {

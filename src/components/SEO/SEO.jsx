@@ -2,7 +2,7 @@ import React from 'react';
 import Helmet from 'react-helmet';
 import urljoin from 'url-join';
 import moment from 'moment';
-import config from '../../../data/SiteConfig';
+import config from '../../../data/site-config';
 
 const SEO = ({ postNode, postPath, postSEO }) => {
   let title;

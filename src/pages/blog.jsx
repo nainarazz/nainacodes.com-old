@@ -4,7 +4,7 @@ import { graphql } from 'gatsby';
 import styled from 'styled-components';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import Layout from '../layout/index.component';
-import config from '../../data/SiteConfig';
+import config from '../../data/site-config';
 import theme from '../config/theme';
 import PostListing from '../components/post-listing/post-listing.component';
 import { SearchContainer, Search, FilterCount } from '../page-styles/blog.style';

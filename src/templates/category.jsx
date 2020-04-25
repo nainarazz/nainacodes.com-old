@@ -5,7 +5,7 @@ import Helmet from 'react-helmet';
 import { graphql } from 'gatsby';
 import Layout from '../layout/index.component';
 import PostListing from '../components/post-listing/post-listing.component';
-import config from '../../data/SiteConfig';
+import config from '../../data/site-config';
 
 const Category = ({ pageContext, data }) => {
   const { category } = pageContext;

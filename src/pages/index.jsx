@@ -2,7 +2,7 @@ import React from 'react';
 import Helmet from 'react-helmet';
 import { graphql, Link } from 'gatsby';
 import Layout from '../layout/index.component';
-import config from '../../data/SiteConfig';
+import config from '../../data/site-config';
 import SEO from '../components/SEO/SEO';
 import Hero from '../components/hero/hero.component';
 import PostListing from '../components/post-listing/post-listing.component';

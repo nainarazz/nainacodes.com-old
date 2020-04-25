@@ -2,7 +2,7 @@ import React from 'react';
 import Helmet from 'react-helmet';
 import { createGlobalStyle } from 'styled-components';
 import { MDXProvider } from '@mdx-js/react';
-import config from '../../data/SiteConfig';
+import config from '../../data/site-config';
 import NavBar from '../components/navbar/navbar.component';
 import { LayoutContainer } from './index.style';
 import Footer from '../components/footer/footer.component';
