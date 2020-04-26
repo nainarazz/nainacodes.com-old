@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-one-expression-per-line */
 /* eslint-disable jsx-a11y/accessible-emoji */
 import React from 'react';
 import Layout from '../layout/index.component';
