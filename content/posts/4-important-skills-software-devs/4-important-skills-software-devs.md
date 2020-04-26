@@ -1,6 +1,7 @@
 ---
 title: '4 Most Important Skills for Software Developers'
-cover: '../images/soft-skills.jpg'
+slug: '4-important-skills-software-devs'
+cover: './soft-skills.jpg'
 imgAttribution: 'https://coreaxis.com/why-soft-skills-training-is-still-trending-in-2019/'
 date: '2020-03-11'
 category: 'non-code'

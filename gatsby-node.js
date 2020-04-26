@@ -3,22 +3,16 @@
 const path = require('path');
 const _ = require('lodash');
 const moment = require('moment');
-const { createFilePath } = require("gatsby-source-filesystem")
 const siteConfig = require('./data/site-config');
 
-exports.onCreateNode = ({ node, actions, getNode }) => {
+exports.onCreateNode = ({ node, actions }) => {
   const { createNodeField } = actions;
   if (node.internal.type === 'Mdx') {
-    const value = createFilePath({ node, getNode })
+    console.log('slug', node.frontmatter.slug)
     createNodeField({
-      // Name of the field you are adding
       name: "slug",
-      // Individual MDX node
       node,
-      // Generated value based on filepath with "blog" prefix. you
-      // don't need a separating "/" before the value because
-      // createFilePath returns a path with the leading "/".
-      value: `/blog${value}`,
+      value: `/blog/${node.frontmatter.slug}`,
     })
   }
 };

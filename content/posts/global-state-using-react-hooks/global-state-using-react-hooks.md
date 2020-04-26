@@ -1,6 +1,7 @@
 ---
 title: 'How to create global state using React hooks in TypeScript'
-cover: '../images/fishing-hook.jpg'
+slug: 'global-state-using-react-hooks'
+cover: '../basic-react-hooks-using-typescript/fishing-hook.jpg'
 imgAttribution: 'https://unsplash.com/photos/HJhGcU_IbsQ'
 date: '2020-04-10'
 category: 'code'
@@ -16,7 +17,9 @@ In this post, I will show you how to create a global state management without us
 
 In your app you will often need some sort of global data that different components need to access. For example, a component might need to know whether a user is authenticated or not.
 
-Without using a state management tool, in React you could pass down isAuthenticated data from the parent component to child component through props. This might not be a problem if there is only one component in between the top-level and child component. However, as the level of nesting increases, it becomes a problem passing props from the top level component to the nth-child component. This problem is known as prop drilling.
+Without using a state management tool, in React you could pass down isAuthenticated data from the parent component to child component through props. This might not be a problem if there is only one component in between the top-level and child component. However, as the level of nesting increases, it becomes a problem passing props from the top level component to the nth-child component. This problem is known as `prop drilling`.
+
+![props drilling](./props-drilling.png)
 
 In order to solve this problem, we need a global state where all components can access the state no matter where they are in the tree level.
 
@@ -33,6 +36,8 @@ An action then reaches the reducer. A reducer is a pure JavaScript function that
 When the store changes, the view receives those changes and updates its state accordingly.
 
 Here is a simple visual diagram for the explanation above.
+
+![redux flow](./redux-flow.png)
 
 So how can we create our own global state without using Redux?
 
