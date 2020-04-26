@@ -5,13 +5,40 @@ import styled from 'styled-components';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import Layout from '../layout/index.component';
 import config from '../../data/site-config';
-import theme from '../config/theme';
+import themeColor from '../config/theme';
+// eslint-disable-next-line import/no-named-as-default
+import media from '../config/media';
 import PostListing from '../components/post-listing/post-listing.component';
-import { SearchContainer, Search, FilterCount } from '../page-styles/blog.style';
+
+const { brand, color } = themeColor;
+
+const SearchContainer = styled.div`
+  margin-bottom: 2em;
+  display: flex;
+`;
+
+const Search = styled.input`
+  border-radius: 6px;
+  padding: 0.6rem;
+  outline: none;
+  font-size: 0.8rem;
+  line-height: 1;
+  border: 2px solid ${color.lightgrey};
+  width: 100%;
+  ${media.tablet`width: 50%;`}
+`;
+
+const FilterCount = styled.div`
+  margin: 0 10px;
+  color: ${brand.lightAccent};
+  font-weight: 600;
+  line-height: 1;
+  padding: 0.6rem;
+`;
 
 const Loader = styled.div`
   text-align: center;
-  color: ${theme.brand.darkShade};
+  color: ${brand.darkShade};
 `;
 
 const pageSize = 8;
