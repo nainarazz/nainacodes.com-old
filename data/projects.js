@@ -3,7 +3,8 @@ const projects = [
         name: 'Gourmetic',
         github: 'https://github.com/nainarazz/gourmetic',
         website: 'https://gourmetic.nainarazz.now.sh',
-        projectImageUrl: '/static/images/projects/gourmetic-home.png',
+        icon: '🍏',
+        projectImageUrl: '',
         imageAlt: 'gourmetic food recipes',
         shortDescription: 'food recipe app',
         description:
@@ -21,9 +22,8 @@ const projects = [
         name: 'Is-series-good',
         github: 'https://github.com/nainarazz/is-series-good-react',
         website: 'https://nainarazz.github.io/is-series-good-react/',
-        projectImageUrl: '/static/images/projects/is-serie-good-home.png',
-        imageAlt: 'tv show',
-        shortDescription: 'quickly judge a tv show by its ratings',
+        icon: '🍿',
+        shortDescription: 'judge a tv show by its ratings',
         description:
             'This is a react side project that allows you to know if a tv show is worth watching based on its ratings.',
         technologies: [
@@ -36,11 +36,10 @@ const projects = [
         ],
     },
     {
-        name: 'Personal Website',
+        name: 'nainacodes',
         github: 'https://github.com/nainarazz/nainacodes.com',
-        website: '',
-        projectImageUrl: '/static/images/projects/portfolio-site-home.png',
-        imageAlt: 'personal website',
+        website: 'https://nainacodes.com',
+        icon: '🌐',
         shortDescription: 'my personal website',
         description: 'This is my personal website and blog.',
         technologies: ['JavaScript', 'Gatsby', 'Styled Components'],
@@ -49,9 +48,8 @@ const projects = [
         name: 'Spectrum',
         github: 'https://github.com/withspectrum/spectrum',
         website: 'https://spectrum.chat',
-        projectImageUrl: '/static/images/projects/spectrum-home.png',
-        imageAlt: 'spectrum chat',
-        shortDescription: 'established open source project I contributed to',
+        icon: '🌐',
+        shortDescription: 'contributed to an established open source project about online communities',
         description:
             'Simple, powerful online communities. This is an established open-source project for building communities online. I liked the project so I decided to contribute to it.',
         technologies: ['JavaScript', 'Flow', 'Styled Components', 'Graphql'],

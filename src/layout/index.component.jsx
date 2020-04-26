@@ -25,13 +25,12 @@ const GlobalStyle = createGlobalStyle`
         overflow: auto;
       }
 
-      code {
-        padding: 2px 4px;
-        background: #f4f3fa;
-        border-radius: 3px;
-        color: ${themeColor.color.body};
-      }
-    
+    code {
+      padding: 2px 4px;
+      background: #f4f3fa;
+      border-radius: 3px;
+      color: ${themeColor.color.body};
+    }
 `;
 
 const components = {

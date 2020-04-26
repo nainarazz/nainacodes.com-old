@@ -19,13 +19,9 @@ export const DateThumbnail = styled.div`
   text-align: center;
 `;
 
-export const Day = styled.span`
-  color: ${brand.darkShade};
-`;
+export const Day = styled.span``;
 
-export const Month = styled.span`
-  color: ${brand.darkShade};
-`;
+export const Month = styled.span``;
 
 export const Year = styled.div`
   color: ${brand.lightAccent};
@@ -36,6 +32,6 @@ export const Year = styled.div`
 
 export const StyledLink = styled(Link)`
   text-decoration: none;
-  color: ${brand.darkShade};
+  color: ${color.body};
   line-height: 1.5;
 `;
