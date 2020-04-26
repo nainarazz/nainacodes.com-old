@@ -122,7 +122,7 @@ export interface Store {
 }
 
 const data: IContact[] = [
-  { id: 1, name: 'Ted', phone: '+1-541-754-3010', address: 'Street 1', isPrivate: true },
+  { id: 1, name: 'Ted', phone: '+1-511-754-3010', address: 'Street 1', isPrivate: true },
   { id: 2, name: 'Ted 2', phone: '+1-541-154-8377', address: 'Street 2', isPrivate: false },
   { id: 3, name: 'Ted 3', phone: '+1-541-763-9221', address: 'Street 3', isPrivate: false },
 ];
