@@ -112,6 +112,7 @@ module.exports = {
             type: 'image/png',
           },
         ],
+        icon: 'static/logos/logo-96.png'
       },
     },
     'gatsby-plugin-offline',
