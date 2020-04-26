@@ -4,13 +4,16 @@ import themeColor from '../../config/theme';
 
 const { brand, color } = themeColor;
 
-export const PostHeader = styled.div`
+export const PostHeader = styled(Link)`
   display: grid;
   grid-template-columns: 65px auto;
   grid-column-gap: 1em;
   border-bottom: 1px solid ${color.lightgrey};
-  margin-bottom: 15px;
-  padding-bottom: 15px;
+  color: ${color.body};
+  padding: 15px 0;
+  &:hover {
+    background-color: ${color.lightgrey};
+  }
 `;
 
 export const Title = styled.span``;
