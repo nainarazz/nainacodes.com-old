@@ -79,6 +79,7 @@ const ProjectLink = styled.a`
 `;
 
 const HomePage = ({ data }) => {
+  const pageSize = 5;
   const posts = (data.allMdx && data.allMdx.edges) || [];
   return (
     <>
@@ -92,7 +93,7 @@ const HomePage = ({ data }) => {
             <Link to="/blog">View all</Link>
           </Header>
         </div>
-        <PostListing postEdges={posts} />
+        <PostListing postEdges={posts.slice(0, pageSize)} />
         <Header style={{ marginBottom: '5px' }}>Open Source Projects</Header>
         <p style={{ fontSize: '0.9rem', fontStyle: 'italic' }}>
           side projects for learning new stuff
