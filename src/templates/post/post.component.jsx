@@ -4,7 +4,6 @@ import { graphql } from 'gatsby';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import Img from 'gatsby-image';
 import Layout from '../../layout/index.component';
-import PostTags from '../../components/post-tags/post-tags.component';
 import SEO from '../../components/SEO/SEO';
 import config from '../../../data/site-config';
 import { Title, CoverImage } from './post.style';
@@ -32,9 +31,6 @@ const Post = ({ data, pageContext }) => {
           <a href={post.imgAttribution}>{post.imgAttribution}</a>
         </CoverImage>
         <MDXRenderer>{postNode.body}</MDXRenderer>
-        <div className="post-meta">
-          <PostTags tags={post.tags} />
-        </div>
       </div>
     </Layout>
   );
