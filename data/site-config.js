@@ -10,8 +10,7 @@ const config = {
   siteRss: '/rss.xml', // Path to the RSS file.
   siteRssTitle: 'Naina Codes RSS feed', // Title of the RSS feed
   siteFBAppID: '', // FB Application ID for using app insights
-  googleAnalyticsID: '', // GA tracking ID.
-  disqusShortname: '', // Disqus shortname.
+  googleAnalyticsID: 'UA-164650982-1', // GA tracking ID.
   dateFromFormat: 'YYYY-MM-DD', // Date format used in the frontmatter.
   dateFormat: 'DD/MM/YYYY', // Date format for display.
   postsPerPage: 5, // Amount of posts displayed per listing page.
