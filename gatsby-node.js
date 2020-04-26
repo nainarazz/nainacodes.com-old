@@ -2,13 +2,10 @@
 
 const path = require('path');
 const _ = require('lodash');
-const moment = require('moment');
-const siteConfig = require('./data/site-config');
 
 exports.onCreateNode = ({ node, actions }) => {
   const { createNodeField } = actions;
   if (node.internal.type === 'Mdx') {
-    console.log('slug', node.frontmatter.slug)
     createNodeField({
       name: "slug",
       node,
@@ -53,18 +50,6 @@ exports.createPages = async ({ graphql, actions }) => {
   const categorySet = new Set();
 
   const postsEdges = markdownQueryResult.data.allMdx.edges;
-
-  // Sort posts
-  postsEdges.sort((postA, postB) => {
-    const dateA = moment(postA.node.frontmatter.date, siteConfig.dateFromFormat);
-
-    const dateB = moment(postB.node.frontmatter.date, siteConfig.dateFromFormat);
-
-    if (dateA.isBefore(dateB)) return 1;
-    if (dateB.isBefore(dateA)) return -1;
-
-    return 0;
-  });
 
   // Post page creating
   postsEdges.forEach((edge, index) => {

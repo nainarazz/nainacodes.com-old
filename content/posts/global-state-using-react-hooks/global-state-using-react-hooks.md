@@ -1,8 +1,9 @@
 ---
 title: 'How to create global state using React hooks in TypeScript'
 slug: 'global-state-using-react-hooks'
-cover: '../basic-react-hooks-using-typescript/fishing-hook.jpg'
-imgAttribution: 'https://unsplash.com/photos/HJhGcU_IbsQ'
+isPublished: true
+cover: './globe.jpg'
+imgAttribution: 'https://unsplash.com/photos/xqC7hdLMpgk'
 date: '2020-04-10'
 category: 'code'
 tags:

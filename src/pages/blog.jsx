@@ -90,7 +90,10 @@ export default BlogPage;
 
 export const query = graphql`
   query {
-    allMdx(sort: { fields: frontmatter___date, order: DESC }) {
+    allMdx(
+      sort: { fields: frontmatter___date, order: DESC }
+      filter: { frontmatter: { isPublished: { eq: true } } }
+    ) {
       edges {
         node {
           id

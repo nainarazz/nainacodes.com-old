@@ -1,6 +1,7 @@
 ---
 title: 'Why Contribute to Open Source'
 slug: 'why-contribute-to-open-source'
+isPublished: true
 cover: './opensource.jpg'
 imgAttribution: ''
 date: '2020-03-18'

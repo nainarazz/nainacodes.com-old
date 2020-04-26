@@ -1,6 +1,7 @@
 ---
 title: 'Basic React Hooks using TypeScript - useState, useEffect'
 slug: 'basic-react-hooks-using-typescript'
+isPublished: true
 cover: './fishing-hook.jpg'
 imgAttribution: 'https://unsplash.com/photos/HJhGcU_IbsQ'
 date: '2020-03-29'
