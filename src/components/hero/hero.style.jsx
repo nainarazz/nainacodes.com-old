@@ -74,6 +74,9 @@ export const TagsContainer = styled.div`
   span {
     margin-right: 10px;
     font-weight: 600;
+    padding: 6px;
+    border-radius: 6px;
+    font-size: 0.9em;
   }
 `;
 

@@ -14,9 +14,9 @@ const Hero = () => {
             <h1>Naina Razafindrabiby.</h1>
             <h2>I build stuff for the web.</h2>
             <TagsContainer>
-              <span style={{ color: techColor.javascript }}>#JavaScript</span>
-              <span style={{ color: techColor.react }}>#React</span>
-              <span style={{ color: techColor.angular }}>#Angular</span>
+              <span style={{ backgroundColor: techColor.javascript }}>#JavaScript</span>
+              <span style={{ backgroundColor: techColor.react }}>#React</span>
+              <span style={{ backgroundColor: techColor.angular }}>#Angular</span>
             </TagsContainer>
           </Intro>
           <Photo
