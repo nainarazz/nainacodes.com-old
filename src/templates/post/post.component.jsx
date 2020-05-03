@@ -6,13 +6,25 @@ import Img from 'gatsby-image';
 import Layout from '../../layout/index.component';
 import SEO from '../../components/SEO/SEO';
 import config from '../../../data/site-config';
-import { Title, CoverImage } from './post.style';
+import {
+  Title,
+  CoverImage,
+  Tag,
+  TwitterShare,
+  TagsContainer,
+  DateUpdate,
+  SocialLinkContainer,
+} from './post.style';
 
 const Post = ({ data, pageContext }) => {
   const { slug } = pageContext;
   const postNode = data.mdx;
   const post = postNode.frontmatter;
   const coverImgFluid = post.cover.childImageSharp.fluid;
+
+  const twitterShare = `http://twitter.com/share?text=${encodeURIComponent(post.title)}&url=${
+    config.siteUrl
+  }/blog/${post.slug}/&via=nr_razz`;
 
   if (!post.id) {
     post.id = slug;
@@ -31,6 +43,25 @@ const Post = ({ data, pageContext }) => {
           <a href={post.imgAttribution}>{post.imgAttribution}</a>
         </CoverImage>
         <MDXRenderer>{postNode.body}</MDXRenderer>
+        <TagsContainer>
+          {post.tags.map((t, i) => (
+            // eslint-disable-next-line react/no-array-index-key
+            <Tag key={i} tag={t}>
+              {t}
+            </Tag>
+          ))}
+          <Tag>Open source</Tag>
+          <Tag>Javascript</Tag>
+        </TagsContainer>
+        <SocialLinkContainer>
+          <TwitterShare
+            href={twitterShare}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="share"
+          />
+          <DateUpdate>Last updated: {post.date}</DateUpdate>
+        </SocialLinkContainer>
       </div>
     </Layout>
   );
@@ -47,6 +78,7 @@ export const pageQuery = graphql`
       excerpt
       frontmatter {
         title
+        slug
         cover {
           childImageSharp {
             fluid(maxWidth: 800, maxHeight: 600) {
