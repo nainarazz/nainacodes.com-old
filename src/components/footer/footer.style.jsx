@@ -10,11 +10,13 @@ export const StyledFooter = styled.footer`
   padding: 20px 1.2em 20px;
   flex-direction: column-reverse;
   ${media.desktop`padding: 20px 0;`}
-  ${media.tablet`flex-direction: row;`}
+  ${media.thone`flex-direction: row;`}
 `;
 
 export const NoticeContainer = styled.div`
   display: flex;
+  justify-content: flex-end;
+  ${media.thone`justify-content: initial;`}
 
   h4 {
     line-height: 2;
