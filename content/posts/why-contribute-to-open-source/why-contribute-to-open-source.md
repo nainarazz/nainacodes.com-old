@@ -5,6 +5,7 @@ isPublished: true
 cover: './opensource.jpg'
 imgAttribution: ''
 date: '2020-03-18'
+lastUpdated: '2020-03-18'
 category: 'non-code'
 tags:
   - open source

@@ -5,6 +5,7 @@ isPublished: true
 cover: './globe.jpg'
 imgAttribution: 'https://unsplash.com/photos/xqC7hdLMpgk'
 date: '2020-04-10'
+lastUpdated: '2020-04-10'
 category: 'code'
 tags:
   - react

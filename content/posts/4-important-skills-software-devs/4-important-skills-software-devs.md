@@ -5,6 +5,7 @@ isPublished: true
 cover: './soft-skills.jpg'
 imgAttribution: 'https://coreaxis.com/why-soft-skills-training-is-still-trending-in-2019/'
 date: '2020-03-11'
+lastUpdated: '2020-03-11'
 category: 'non-code'
 tags:
   - soft skills

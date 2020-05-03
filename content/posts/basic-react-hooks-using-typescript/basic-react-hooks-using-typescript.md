@@ -5,11 +5,12 @@ isPublished: true
 cover: './fishing-hook.jpg'
 imgAttribution: 'https://unsplash.com/photos/HJhGcU_IbsQ'
 date: '2020-03-29'
+lastUpdated: '2020-03-29'
 category: 'code'
 tags:
   - react
   - react hooks
-  - typscript
+  - typescript
 ---
 
 React hooks are the new way of accessing React features in a React component. We can now use functions to create components that can have access to state and lifecycle methods.

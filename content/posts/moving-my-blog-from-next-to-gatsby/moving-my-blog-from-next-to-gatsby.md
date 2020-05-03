@@ -5,10 +5,11 @@ isPublished: true
 cover: './cover.png'
 imgAttribution: ''
 date: '2020-05-03'
+lastUpdated: '2020-05-03'
 category: 'opinion'
 tags:
   - react
-  - next.js
+  - nextjs
   - gatsby
 ---
 
