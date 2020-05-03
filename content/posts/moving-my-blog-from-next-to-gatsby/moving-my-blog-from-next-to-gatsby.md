@@ -93,6 +93,6 @@ I don't regret moving my blog site to Gatsby. I have learned something new, and 
 
 By the way, Next.js is awesome. I still love it, and I will definitely still use it when creating React apps. Gatsby will not always be the right tool to use for a certain project.
 
-To end, here is a the Lighthouse score for this site.
+To end, here is the Lighthouse score for this site.
 
 ![lighthousescore](./lighthouse-report.png)
