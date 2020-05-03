@@ -19,11 +19,7 @@ const Hero = () => {
               <span style={{ backgroundColor: techColor.angular }}>#Angular</span>
             </TagsContainer>
           </Intro>
-          <Photo
-            src="/images/profile-pic.jpg"
-            srcSet="/images/profile-pic_w331.jpg 331w, /images/profile-pic_w519.jpg 519w, /images/profile-pic_w740.jpg 740w"
-            alt="profile photo"
-          />
+          <Photo src="/images/profile-pic.png" alt="picture of myself" />
         </Content>
       </HeaderColor>
     </>
