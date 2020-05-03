@@ -16,6 +16,21 @@ import {
   SocialLinkContainer,
 } from './post.style';
 
+const monthDictionary = {
+  0: 'Jan',
+  1: 'Feb',
+  2: 'Mar',
+  3: 'Apr',
+  4: 'May',
+  5: 'Jun',
+  6: 'Jul',
+  7: 'Aug',
+  8: 'Sept',
+  9: 'Oct',
+  10: 'Nov',
+  11: 'Dec',
+};
+
 const Post = ({ data, pageContext }) => {
   const { slug } = pageContext;
   const postNode = data.mdx;
@@ -25,6 +40,11 @@ const Post = ({ data, pageContext }) => {
   const twitterShare = `http://twitter.com/share?text=${encodeURIComponent(post.title)}&url=${
     config.siteUrl
   }/blog/${post.slug}/&via=nr_razz`;
+
+  const lastUpdated = new Date(post.lastUpdated);
+  const lastUpdatedFormatted = `${
+    monthDictionary[lastUpdated.getMonth()]
+  } ${lastUpdated.getDate()} ${lastUpdated.getFullYear()}`;
 
   if (!post.id) {
     post.id = slug;
@@ -50,8 +70,6 @@ const Post = ({ data, pageContext }) => {
               {t}
             </Tag>
           ))}
-          <Tag>Open source</Tag>
-          <Tag>Javascript</Tag>
         </TagsContainer>
         <SocialLinkContainer>
           <TwitterShare
@@ -60,7 +78,7 @@ const Post = ({ data, pageContext }) => {
             rel="noopener noreferrer"
             aria-label="share"
           />
-          <DateUpdate>Last updated: {post.date}</DateUpdate>
+          <DateUpdate>Last updated: {lastUpdatedFormatted}</DateUpdate>
         </SocialLinkContainer>
       </div>
     </Layout>
@@ -88,6 +106,7 @@ export const pageQuery = graphql`
         }
         imgAttribution
         date
+        lastUpdated
         category
         tags
       }
