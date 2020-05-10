@@ -23,7 +23,7 @@ Let us start with the syntax.
 arr.reduce(callback, initialValue);
 ```
 
-The first argument of reduce is a callback function that is executed on each iteration of the elements in the array. In case you are not familiar with callbacks, here is a short introduction on callbacks.
+The first argument of reduce is a callback function that is executed on each iteration of the elements in the array. In case you are not familiar with callbacks, here is an [article](https://www.javascripttutorial.net/javascript-callback/) about callbacks.
 
 On each iteration, the callback returns a value, and that value is going to be used in the next iteration. This value is stored in what we call `accumulator`, and after iterating through all the values in the array, the final value of the accumulator is returned.
 
@@ -188,7 +188,7 @@ console.log(result); // 9
 
 So here we have a pipeline that squares a value, doubles it, and then halves it. We execute the pipeline with `reduce`.
 
-If we can reorder our pipeline, it will give us a different result.
+If we reorder our pipeline, it will give us a different result.
 
 ```javascript
 const pipeline = [double, square, halve];
