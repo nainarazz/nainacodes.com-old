@@ -6,7 +6,7 @@ const config = {
   siteUrl: 'https://nainacodes.com', // Domain of your website without pathPrefix.
   pathPrefix: '/', // Prefixes all links. For cases when deployed to example.github.io/gatsby-advanced-starter/.
   siteDescription:
-    'A personal blog dedicated to JavaScript, React, Angular, Node, and other web technologies.', // Website description used for RSS feeds/meta description tag.
+    'A blog about JavaScript and web development - how-tos, reviews, opinions, how-it-works', // Website description used for RSS feeds/meta description tag.
   siteRss: '/rss.xml', // Path to the RSS file.
   siteRssTitle: 'Naina Codes RSS feed', // Title of the RSS feed
   siteFBAppID: '', // FB Application ID for using app insights
@@ -23,6 +23,11 @@ const config = {
     'JavaScript enthusiast, React, Angular, Node. Loves frontend and web related stuff', // User description to display in the author segment.
   // Links to social profiles/projects you want to display in the author segment/navigation bar.
   userLinks: [
+    {
+      label: 'Rss Feed',
+      url: 'https://nainacodes.com/rss.xml',
+      iconUrl: '/icons/rss-feed.png',
+    },
     {
       label: 'GitHub',
       url: 'https://github.com/nainarazz',
