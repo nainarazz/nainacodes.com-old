@@ -10,7 +10,9 @@ const { color } = themeColor;
 export const Contact = () => {
   return (
     <Layout>
-      <Helmet title={`Contact | ${config.siteTitle}`} />
+      <Helmet title={`Contact | ${config.siteTitle}`}>
+        <meta name="description" content="Where you can reach me on the web" />
+      </Helmet>
       <h1 style={{ marginBottom: '0.5rem', color: color.red }}>Don&apos;t be a stranger,</h1>
       <h2 style={{ margin: '0 0 3rem' }}>just say hello 👋</h2>
       <p>

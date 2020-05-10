@@ -9,7 +9,12 @@ const AboutPage = () => {
   return (
     <Layout>
       <div className="about-container">
-        <Helmet title={`About | ${config.siteTitle}`} />
+        <Helmet title={`About | ${config.siteTitle}`}>
+          <meta
+            name="description"
+            content="Who am I, what I do, my favorite resources on the web"
+          />
+        </Helmet>
         <h1>Hey there, I&apos;m Naina Razafindrabiby 👋</h1>
         <p>I am a JavaScript developer, and I love designing and creating apps for the web.</p>
 
