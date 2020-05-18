@@ -150,8 +150,8 @@ module.exports = {
                 date: edge.node.frontmatter.date,
                 title: edge.node.frontmatter.title,
                 description: edge.node.excerpt,
-                url: `${rssMetadata.site_url}blog/${edge.node.frontmatter.slug}`,
-                guid: `${rssMetadata.site_url}blog/${edge.node.frontmatter.slug}`,
+                url: `${rssMetadata.site_url}/blog/${edge.node.frontmatter.slug}`,
+                guid: `${rssMetadata.site_url}/blog/${edge.node.frontmatter.slug}`,
                 custom_elements: [
                   { 'content:encoded': edge.node.html },
                   { author: config.userEmail },
