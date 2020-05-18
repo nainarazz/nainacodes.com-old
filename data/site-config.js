@@ -15,7 +15,7 @@ const config = {
   dateFormat: 'DD/MM/YYYY', // Date format for display.
   postsPerPage: 5, // Amount of posts displayed per listing page.
   userName: 'Naina Razafindrabiby', // Username to display in the author segment.
-  userEmail: '', // Email used for RSS feed's author segment
+  userEmail: 'nainacodes@gmail.com', // Email used for RSS feed's author segment
   userTwitter: 'nr_razz', // Optionally renders "Follow Me" in the UserInfo segment.
   userLocation: 'earth', // User location to display in the author segment.
   userAvatar: '', // User avatar to display in the author segment.
