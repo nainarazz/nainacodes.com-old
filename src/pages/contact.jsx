@@ -32,10 +32,7 @@ export const Contact = () => {
           Twitter: <a href="https://twitter.com/nr_razz">nr_razz</a>
         </li>
         <li>
-          Email:{' '}
-          <a href="mailto:&#110;&#97;&#105;&#110;&#97;&#114;&#97;&#122;&#122;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;">
-            naina razafindrabiby
-          </a>
+          Email: <a href="mailto:nainacodes@gmail.com">naina razafindrabiby</a>
         </li>
         <li>
           Resume:{' '}
