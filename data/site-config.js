@@ -45,7 +45,7 @@ const config = {
     },
     {
       label: 'Email',
-      url: 'mailto:&#110;&#97;&#105;&#110;&#97;&#114;&#97;&#122;&#122;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;',
+      url: 'mailto:nainacodes@gmail.com',
       iconUrl: '/icons/gmail.png',
     },
   ],
