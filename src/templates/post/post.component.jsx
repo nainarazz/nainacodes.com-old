@@ -56,31 +56,29 @@ const Post = ({ data, pageContext }) => {
         <title>{`${post.title} | ${config.siteTitle}`}</title>
       </Helmet>
       <SEO postPath={slug} postNode={postNode} postSEO />
-      <div>
-        <Title>{post.title}</Title>
-        <CoverImage>
-          <Img fluid={coverImgFluid} />
-          <a href={post.imgAttribution}>{post.imgAttribution}</a>
-        </CoverImage>
-        <MDXRenderer>{postNode.body}</MDXRenderer>
-        <TagsContainer>
-          {post.tags.map((t, i) => (
-            // eslint-disable-next-line react/no-array-index-key
-            <Tag key={i} tag={t}>
-              {t}
-            </Tag>
-          ))}
-        </TagsContainer>
-        <SocialLinkContainer>
-          <TwitterShare
-            href={twitterShare}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="share"
-          />
-          <DateUpdate>Last updated: {lastUpdatedFormatted}</DateUpdate>
-        </SocialLinkContainer>
-      </div>
+      <Title>{post.title}</Title>
+      <CoverImage>
+        <Img fluid={coverImgFluid} />
+        <a href={post.imgAttributionUrl}>{post.imgAttributionText}</a>
+      </CoverImage>
+      <MDXRenderer>{postNode.body}</MDXRenderer>
+      <TagsContainer>
+        {post.tags.map((t, i) => (
+          // eslint-disable-next-line react/no-array-index-key
+          <Tag key={i} tag={t}>
+            {t}
+          </Tag>
+        ))}
+      </TagsContainer>
+      <SocialLinkContainer>
+        <TwitterShare
+          href={twitterShare}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="share"
+        />
+        <DateUpdate>Last updated: {lastUpdatedFormatted}</DateUpdate>
+      </SocialLinkContainer>
     </Layout>
   );
 };
@@ -104,7 +102,8 @@ export const pageQuery = graphql`
             }
           }
         }
-        imgAttribution
+        imgAttributionUrl
+        imgAttributionText
         date
         lastUpdated
         category

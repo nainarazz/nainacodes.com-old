@@ -3,7 +3,8 @@ title: 'Learn Something New by Reading the Documentation (docs)'
 slug: 'learn-by-reading-documentation'
 isPublished: true
 cover: './cover.jpg'
-imgAttribution: 'https://unsplash.com/photos/tn57JI3CewI'
+imgAttributionUrl: 'https://unsplash.com/photos/tn57JI3CewI'
+imgAttributionText: 'Photo by Sharon McCutcheon on Unsplash'
 date: '2020-05-24'
 lastUpdated: '2020-05-24'
 category: 'opinion'
@@ -65,7 +66,6 @@ If you have visited the [MDN web docs](https://developer.mozilla.org/en-US/docs/
 let new_array = arr.map(function callback( currentValue[, index[, array]]) {
     // return element for new_array
 }[, thisArg])
-
 ```
 
 This is the syntax for the `Array.map()` function. Many have been confused what the square brackets mean, including me, but it simply means that a parameter is **_optional_**.
