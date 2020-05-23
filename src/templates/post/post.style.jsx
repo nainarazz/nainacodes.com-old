@@ -5,17 +5,24 @@ import media from '../../config/media';
 
 export const CoverImage = styled.div`
   text-align: center;
-  margin-bottom: 4em;
   a {
     padding: 20px 0;
   }
 `;
 
 export const Title = styled.h1`
-  text-align: center;
+  text-align: left;
+  margin-bottom: 1rem;
+  margin-top: 2rem;
+`;
+
+export const PostMeta = styled.div`
+  font-size: 0.8rem;
+  margin-bottom: 3rem;
 `;
 
 export const TagsContainer = styled.div`
+  margin-top: 5px;
   display: flex;
   flex-wrap: wrap;
   width: 100%;
@@ -23,7 +30,6 @@ export const TagsContainer = styled.div`
 `;
 
 export const Tag = styled.div`
-  height: 30px;
   margin-right: 10px;
   margin-bottom: 10px;
   padding: 0 4px;

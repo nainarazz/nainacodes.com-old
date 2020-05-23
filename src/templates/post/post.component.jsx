@@ -10,10 +10,10 @@ import {
   Title,
   CoverImage,
   Tag,
-  TwitterShare,
   TagsContainer,
   DateUpdate,
   SocialLinkContainer,
+  PostMeta,
 } from './post.style';
 
 const monthDictionary = {
@@ -41,6 +41,11 @@ const Post = ({ data, pageContext }) => {
     config.siteUrl
   }/blog/${post.slug}/&via=nr_razz`;
 
+  const createdAt = new Date(post.date);
+  const createdAtFormatted = `${
+    monthDictionary[createdAt.getMonth()]
+  } ${createdAt.getDate()}, ${createdAt.getFullYear()}`;
+
   const lastUpdated = new Date(post.lastUpdated);
   const lastUpdatedFormatted = `${
     monthDictionary[lastUpdated.getMonth()]
@@ -56,27 +61,39 @@ const Post = ({ data, pageContext }) => {
         <title>{`${post.title} | ${config.siteTitle}`}</title>
       </Helmet>
       <SEO postPath={slug} postNode={postNode} postSEO />
-      <Title>{post.title}</Title>
       <CoverImage>
         <Img fluid={coverImgFluid} />
         <a href={post.imgAttributionUrl}>{post.imgAttributionText}</a>
       </CoverImage>
+      <div>
+        <Title>{post.title}</Title>
+        <PostMeta>
+          <span>{createdAtFormatted}</span>
+          <span>
+            ・
+            <span role="img" aria-label="time to read">
+              🕑
+            </span>
+            {postNode.timeToRead} min
+          </span>
+          <span>
+            <a href={twitterShare} target="_blank" rel="noopener noreferrer">
+              ・share
+            </a>
+          </span>
+          <TagsContainer>
+            {post.tags.map((t, i) => (
+              // eslint-disable-next-line react/no-array-index-key
+              <Tag key={i} tag={t}>
+                {t}
+              </Tag>
+            ))}
+          </TagsContainer>
+        </PostMeta>
+      </div>
+
       <MDXRenderer>{postNode.body}</MDXRenderer>
-      <TagsContainer>
-        {post.tags.map((t, i) => (
-          // eslint-disable-next-line react/no-array-index-key
-          <Tag key={i} tag={t}>
-            {t}
-          </Tag>
-        ))}
-      </TagsContainer>
       <SocialLinkContainer>
-        <TwitterShare
-          href={twitterShare}
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="share"
-        />
         <DateUpdate>Last updated: {lastUpdatedFormatted}</DateUpdate>
       </SocialLinkContainer>
     </Layout>
@@ -97,7 +114,7 @@ export const pageQuery = graphql`
         slug
         cover {
           childImageSharp {
-            fluid(maxWidth: 800, maxHeight: 600) {
+            fluid(maxWidth: 800, maxHeight: 400) {
               ...GatsbyImageSharpFluid
             }
           }
@@ -112,6 +129,7 @@ export const pageQuery = graphql`
       fields {
         slug
       }
+      timeToRead
     }
   }
 `;
