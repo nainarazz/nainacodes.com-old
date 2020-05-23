@@ -11,6 +11,15 @@ exports.onCreateNode = ({ node, actions }) => {
       node,
       value: `/blog/${node.frontmatter.slug}`,
     })
+
+    createNodeField({
+      name: 'editLink',
+      node,
+      value: `https://github.com/nainarazz/nainacodes.com/edit/master${node.fileAbsolutePath.replace(
+        __dirname,
+        '',
+      )}`,
+    })
   }
 };
 

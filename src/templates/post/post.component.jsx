@@ -76,11 +76,10 @@ const Post = ({ data, pageContext }) => {
             </span>
             {postNode.timeToRead} min
           </span>
-          <span>
-            <a href={twitterShare} target="_blank" rel="noopener noreferrer">
-              ・share
-            </a>
-          </span>
+          <a href={postNode.fields.editLink}>・edit</a>
+          <a href={twitterShare} target="_blank" rel="noopener noreferrer">
+            ・share
+          </a>
           <TagsContainer>
             {post.tags.map((t, i) => (
               // eslint-disable-next-line react/no-array-index-key
@@ -128,6 +127,7 @@ export const pageQuery = graphql`
       }
       fields {
         slug
+        editLink
       }
       timeToRead
     }
