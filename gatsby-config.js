@@ -91,6 +91,13 @@ module.exports = {
     'gatsby-plugin-twitter',
     'gatsby-plugin-sitemap',
     {
+      resolve: `gatsby-plugin-canonical-urls`,
+      options: {
+        siteUrl: `https://www.nainacodes.com`,
+        stripQueryString: true,
+      },
+    },
+    {
       resolve: 'gatsby-plugin-manifest',
       options: {
         name: config.siteTitle,
