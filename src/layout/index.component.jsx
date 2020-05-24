@@ -31,12 +31,18 @@ const GlobalStyle = createGlobalStyle`
       border-radius: 3px;
       color: ${themeColor.color.body};
     }
+
+    ::selection {
+      background: ${themeColor.techColor.react};
+    }
 `;
 
 const components = {
   // eslint-disable-next-line react/jsx-props-no-spreading
   pre: (props) => <div {...props} />,
   code: CodeBlock,
+  // eslint-disable-next-line jsx-a11y/anchor-has-content
+  a: (props) => <a {...props} style={{ textDecoration: 'underline' }} />,
 };
 
 const MainLayout = ({ children, withHeroHeader }) => {

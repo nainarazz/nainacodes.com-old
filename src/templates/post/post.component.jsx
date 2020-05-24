@@ -65,31 +65,29 @@ const Post = ({ data, pageContext }) => {
         <Img fluid={coverImgFluid} />
         <a href={post.imgAttributionUrl}>{post.imgAttributionText}</a>
       </CoverImage>
-      <div>
-        <Title>{post.title}</Title>
-        <PostMeta>
-          <span>{createdAtFormatted}</span>
-          <span>
-            ・
-            <span role="img" aria-label="time to read">
-              🕑
-            </span>
-            {postNode.timeToRead} min
+      <Title>{post.title}</Title>
+      <PostMeta>
+        <span>{createdAtFormatted}</span>
+        <span>
+          ・
+          <span role="img" aria-label="time to read">
+            🕑
           </span>
-          <a href={postNode.fields.editLink}>・edit</a>
-          <a href={twitterShare} target="_blank" rel="noopener noreferrer">
-            ・share
-          </a>
-          <TagsContainer>
-            {post.tags.map((t, i) => (
-              // eslint-disable-next-line react/no-array-index-key
-              <Tag key={i} tag={t}>
-                {t}
-              </Tag>
-            ))}
-          </TagsContainer>
-        </PostMeta>
-      </div>
+          {postNode.timeToRead} min
+        </span>
+        <a href={postNode.fields.editLink}>・edit</a>
+        <a href={twitterShare} target="_blank" rel="noopener noreferrer">
+          ・share
+        </a>
+        <TagsContainer>
+          {post.tags.map((t, i) => (
+            // eslint-disable-next-line react/no-array-index-key
+            <Tag key={i} tag={t}>
+              {t}
+            </Tag>
+          ))}
+        </TagsContainer>
+      </PostMeta>
 
       <MDXRenderer>{postNode.body}</MDXRenderer>
       <SocialLinkContainer>
