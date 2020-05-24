@@ -82,7 +82,7 @@ const Post = ({ data, pageContext }) => {
         <TagsContainer>
           {post.tags.map((t, i) => (
             // eslint-disable-next-line react/no-array-index-key
-            <Tag key={i} tag={t}>
+            <Tag key={i} tag={t} to={`/tags/${t}`}>
               {t}
             </Tag>
           ))}

@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Link } from 'gatsby';
 import themeColor from '../../config/theme';
 // eslint-disable-next-line import/no-named-as-default
 import media from '../../config/media';
@@ -29,7 +30,7 @@ export const TagsContainer = styled.div`
   ${media.thone`width: initial;`}
 `;
 
-export const Tag = styled.div`
+export const Tag = styled(Link)`
   margin-right: 10px;
   margin-bottom: 10px;
   padding: 0 4px;
