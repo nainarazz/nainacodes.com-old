@@ -41,6 +41,8 @@ const Post = ({ data, pageContext }) => {
     config.siteUrl
   }/blog/${post.slug}/&via=nr_razz`;
 
+  const blogPostUrl = `${config.siteUrl}/blog/${post.slug}`;
+
   const createdAt = new Date(post.date);
   const createdAtFormatted = `${
     monthDictionary[createdAt.getMonth()]
@@ -91,6 +93,13 @@ const Post = ({ data, pageContext }) => {
 
       <MDXRenderer>{postNode.body}</MDXRenderer>
       <SocialLinkContainer>
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
+          href={`https://mobile.twitter.com/search?q=${encodeURIComponent(blogPostUrl)}`}
+        >
+          Discuss on Twitter
+        </a>
         <DateUpdate>Last updated: {lastUpdatedFormatted}</DateUpdate>
       </SocialLinkContainer>
     </Layout>
