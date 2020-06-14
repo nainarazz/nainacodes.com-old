@@ -33,7 +33,8 @@ const GlobalStyle = createGlobalStyle`
     }
 
     ::selection {
-      background: ${themeColor.techColor.react};
+      background: ${themeColor.brand.mainBrand};
+      color: #fff;
     }
 `;
 
