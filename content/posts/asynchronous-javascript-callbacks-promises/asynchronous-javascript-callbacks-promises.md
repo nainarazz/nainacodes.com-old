@@ -152,11 +152,11 @@ const promise = new Promise((resolve, reject) => {
 });
 ```
 
-A promise begins with the initial state. When the operation succeeds, it transitions into a resolve state, and if it fails, it goes into rejected state. Note once it has changed states, it is final. That means if it has resolved, it cannot reject, and vice-versa.
+A promise begins with the initial state. When the operation succeeds, it transitions into a resolve state, and if it fails, it goes into rejected state. Note once it has changed states, it is final. In other words, if it has resolved, it cannot reject, and vice-versa.
 
 ### Consuming promises
 
-There are three methods that we can use to consume the value of a promise — the `then()`, `catch()`, and `finally()`
+There are three methods that we can use to consume the value of a promise — the `then()`, `catch()`, and `finally()`.
 
 ### then
 
@@ -164,7 +164,7 @@ The `then()` is the most important of the three. It is used to access the `resol
 
 The first callback is called when the promise has resolved, and its argument is the resolved value of the promise.The second callback is called when the promise has rejected, and its argument is the error.
 
-```javascript
+```javascript linesToHighlight=20
 const promise = new Promise((resolve, reject) => {
   // some code to do something
   const success = true; // my operation has succeeded
@@ -191,7 +191,7 @@ promise.then(resolveCallback, rejectCallback);
 
 As the the name implies, the `catch()` is used to catch error in the promise. It accepts a callback function in which the argument is the error. When you use the catch method, you can omit the second argument of the `then()` , and handle the error gracefully inside the catch.
 
-```javascript
+```javascript linesToHighlight=9
 const promise = new Promise((resolve, reject) => {
   throw new Error('sorry something bad happend');
 });
@@ -207,7 +207,7 @@ promise.then(resolveCallback).catch((error) => console.log('my error', error));
 
 The `finally()` method is always run whether the promise is resolved or rejected. It is good for performing clean up functions, and it avoids duplicating code in promise's `then()` and `catch()`.
 
-```javascript
+```javascript linesToHighlight=23
 const promise = new Promise((resolve, reject) => {
   // some code to do something
   const success = true; // my operation has succeeded
@@ -237,7 +237,7 @@ promise
 
 The best thing about promises is that they are chainable. Remember the callback hell above? We can actually improve our code by converting the callbacks into promises.
 
-```javascript
+```javascript linesToHighlight=2,14,26,37,38,39,40
 function getEmployee(employeeName) {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
@@ -294,7 +294,7 @@ When you use async/await, you are writing asynchronous function in a synchronous
 
 Let us convert our employee example to use async/await.
 
-```javascript
+```javascript linesToHighlight=37,38,39,40
 function getEmployee(employeeName) {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
