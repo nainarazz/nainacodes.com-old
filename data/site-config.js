@@ -3,6 +3,7 @@ const config = {
   siteTitleShort: 'NR Codes', // Short site title for homescreen (PWA). Preferably should be under 12 characters to prevent truncation.
   siteTitleAlt: 'Naina Codes', // Alternative site title for SEO.
   siteLogo: '/logos/logo-512.png', // Logo used for SEO and manifest.
+  siteImageCard: '/images/image-card.png',
   siteUrl: 'https://nainacodes.com', // Domain of your website without pathPrefix.
   pathPrefix: '/', // Prefixes all links. For cases when deployed to example.github.io/gatsby-advanced-starter/.
   siteDescription:

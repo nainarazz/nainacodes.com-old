@@ -19,7 +19,7 @@ const SEO = ({ postNode, postPath, postSEO }) => {
   } else {
     title = config.siteTitle;
     description = config.siteDescription;
-    image = config.siteLogo;
+    image = config.siteImageCard;
   }
 
   const getImagePath = (imageURI) => {
