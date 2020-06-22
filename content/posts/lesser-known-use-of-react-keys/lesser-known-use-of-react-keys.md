@@ -5,8 +5,8 @@ isPublished: true
 cover: './key.jpg'
 imgAttributionUrl: 'https://unsplash.com/photos/Nel8STCcWy8'
 imgAttributionText: 'Photo by Kelly Sikkema on Unsplash'
-date: '2020-06-8'
-lastUpdated: '2020-06-8'
+date: '2020-06-08'
+lastUpdated: '2020-06-08'
 category: 'code'
 tags:
   - react

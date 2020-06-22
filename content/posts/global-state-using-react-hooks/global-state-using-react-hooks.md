@@ -5,8 +5,8 @@ isPublished: true
 cover: './globe.jpg'
 imgAttributionUrl: 'https://unsplash.com/photos/xqC7hdLMpgk'
 imgAttributionText: 'Photo by fotografierende on Unsplash'
-date: '2020-4-10'
-lastUpdated: '2020-6-22'
+date: '2020-04-10'
+lastUpdated: '2020-06-22'
 category: 'code'
 tags:
   - react
