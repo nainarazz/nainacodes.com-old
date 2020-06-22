@@ -1,6 +1,6 @@
 ---
-title: 'Create an Accessible and Reusable React Modal  (TypeScript)'
-slug: 'create-an-accessible-and-reusable-react-modal  (TypeScript)'
+title: 'Create an Accessible and Reusable React Modal (TypeScript)'
+slug: 'create-an-accessible-and-reusable-react-modal'
 isPublished: true
 cover: './cover.jpg'
 imgAttributionUrl: 'https://unsplash.com/photos/_UeY8aTI6d0'
@@ -33,7 +33,7 @@ I also assume you already know React and hooks. If you are not familiar with Typ
 
 There are already many libraries out there that can be use to create a responsive, accessible modal in React. However, sometimes, you have requirements in your design that cannot be fully met by those libraries. Sometimes customizing the library to fit your need is difficult.
 
-In such a case, you might want to create your own modal, but you might still want to follow the standards that are already in set.
+In such a case, you might want to create your own modal, but still follow the standards that are already in place.
 
 My suggestion is that if a library can meet your needs, then just use that library; otherwise, create your own modal. The reason is that making your modal fully accessible is difficult. You may not want to go through all the hurdles.
 
@@ -41,7 +41,7 @@ My suggestion is that if a library can meet your needs, then just use that libra
 
 ## Creating the modal component
 
-```tsx
+```tsx filename=modal.tsx
 import React, { FunctionComponent, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 
@@ -89,27 +89,19 @@ export const Modal: FunctionComponent<ModalProps> = ({
 
 Here is the actual modal component. It is pretty much self-explanatory. We have a functional component that receives `ModalProps` described in the interface. Through the props, we could set the title and content of our modal dynamically. We can determine whether our modal is open and we can also close it programatically.
 
-Our HTML markup is created with styled-components imported from the [`modal.style`](http://modal.style) file. Here is how our styles look like:
+Our HTML markup is created with styled-components imported from the `modal.style.tsx` file. Here is how our styles look like:
 
-```tsx
+```tsx filename=modal.style.tsx
 import styled from 'styled-components';
 
 export const Wrapper = styled.div`
-	width 80%;
-  @media(min-width: 768px) {
-  width: 60%;
-  }
-  @media(min-width: 1024px) {
-  width: 40%;
-  }
-
-	position: fixed;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	z-index: 700;
-	width: inherit;
-	outline: 0;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 700;
+  width: inherit;
+  outline: 0;
 `;
 
 export const Backdrop = styled.div`
@@ -164,7 +156,7 @@ export const Content = styled.div`
 
 The interesting part of our modal is in the return statement.
 
-```tsx
+```tsx filename=modal.tsx
 return isShown ? ReactDOM.createPortal(modal, document.body) : null;
 ```
 
@@ -191,9 +183,9 @@ In our example, we are rendering the modal at the end of the body of the html (_
 
 ## Using the modal
 
-To use our modal, we are going to create a custom React hook that will manage the state of the modal. We can use the custom in any component where we want to render our modal.
+To use our modal, we are going to create a custom React hook that will manage the state of the modal. We can use the custom hook in any component where we want to render our modal.
 
-```tsx linesToHighlight=7
+```tsx linesToHighlight=7 filename=useModal.tsx
 import { useState } from 'react';
 
 export const useModal = () => {
@@ -208,7 +200,7 @@ export const useModal = () => {
 
 Inside our App component, we could render our modal like this.
 
-```tsx
+```tsx linesToHighlight=7,14 filename=index.tsx
 import React, { Component, FunctionComponent, useState } from 'react';
 import { render } from 'react-dom';
 import { Modal } from './modal/modal';
@@ -230,25 +222,26 @@ const App: FunctionComponent = () => {
 render(<App />, document.getElementById('root'));
 ```
 
-We use the `isShown` state and `toogle` function from the custom hook to show and hide the modal. We are only showing a simple statement in our modal, which isn't very helpful.
+We use the `isShown` state and `toogle` function from the custom hook to show and hide the modal. At the moment, we are only showing a simple statement in our modal, which isn't very helpful.
 
 Let us try to create a more specific kind of modal, a confirmation modal. In your app you may need several types of modal, like a confirmation modal, a success or error modal, or even a modal with a form in it. To customize our modal depending on the type of modal we need, we can create a component and pass it as a content to our modal props.
 
 Here is the content of our confirmation modal.
 
-```tsx
+```tsx filename=confirmation-modal.tsx
 import React, { FunctionComponent } from 'react';
 import { ConfirmationButtons, Message, YesButton, NoButton } from './confirmation-modal.style';
 
 interface ConfirmationModalProps {
   onConfirm: () => void;
   onCancel: () => void;
+  message: string;
 }
 
 export const ConfirmationModal: FunctionComponent<ConfirmationModalProps> = (props) => {
   return (
     <React.Fragment>
-      <Message>Are you sure you want to delete element?</Message>
+      <Message>{props.message}</Message>
       <ConfirmationButtons>
         <YesButton onClick={props.onConfirm}>Yes</YesButton>
         <NoButton onClick={props.onCancel}>No</NoButton>
@@ -260,7 +253,7 @@ export const ConfirmationModal: FunctionComponent<ConfirmationModalProps> = (pro
 
 And the styles
 
-```tsx
+```tsx filename=confirmation-modal.style.tsx
 import styled from 'styled-components';
 
 export const ConfirmationButtons = styled.div`
@@ -295,7 +288,7 @@ This is a just simple component asking for a confirmation to delete an element, 
 
 Now we could pass this confirmation component to our modal in `App` component.
 
-```tsx linesToHighlight=20,21,22,23,24
+```tsx filename=index.tsx linesToHighlight=20,21,22,23,24
 import React, { Component, FunctionComponent, useState } from 'react';
 import { render } from 'react-dom';
 import { Modal } from './modal/modal';
@@ -316,10 +309,9 @@ const App: FunctionComponent = () => {
         headerText="Confirmation"
         modalContent={
           <ConfirmationModal
-            isShown={isShown}
             onConfirm={onConfirm}
             onCancel={onCancel}
-            hide={toggle}
+            message="Are you sure you want to delete element?"
           />
         }
       />
@@ -357,7 +349,7 @@ Let us see how we can implement them in our modal.
 
 ### HTML attributes for accessible modal
 
-```tsx linesToHighlight=4,5
+```tsx linesToHighlight=4,5 filename=modal.tsx
 export const Modal: FunctionComponent<ModalProps> = ({ isShown, hide, modalContent }) => {
   const modal = (
     <React.Fragment>
@@ -457,7 +449,7 @@ npm i react-focus-lock
 
 After installing the package, we can wrap our modal component with `<FocusLock>` component provided by the library.
 
-```tsx
+```tsx linesToHighlight=11,23 filename=modal.tsx
 import FocusLock from 'react-focus-lock';
 
 // other codes and import above
@@ -494,7 +486,7 @@ Tick.
 
 - [x] focus should be trapped inside the modal
 
-Wow! Now we have a fully functioning modal with accessible features. Congrats 😀 🙌. That's all for this tutorial.
+Wow! Now we have a fully functioning modal with accessible features. Congrats 😀 🙌.
 
 ## Conclusion
 
