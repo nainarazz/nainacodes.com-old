@@ -5,8 +5,8 @@ isPublished: true
 cover: './globe.jpg'
 imgAttributionUrl: 'https://unsplash.com/photos/xqC7hdLMpgk'
 imgAttributionText: 'Photo by fotografierende on Unsplash'
-date: '2020-04-10'
-lastUpdated: '2020-04-10'
+date: '2020-4-10'
+lastUpdated: '2020-6-22'
 category: 'code'
 tags:
   - react
@@ -140,9 +140,9 @@ export const StateProvider = ({ children }) => {
 };
 ```
 
-In line 22, we have created a context object called `myContext`. This object will contain our **global state** and we have initialized it with the values in the `defaultState` variable. It includes `isAuthenticated` and `contacts` (list) properties.
+We have created a context object called `myContext`. This object will contain our **global state** and we have initialized it with the values in the `defaultState` variable. It includes `isAuthenticated` and `contacts` (list) properties.
 
-In line 24 we export a function that calls `useContext` to access the data. We will use this function in our components in order to access values in our state.
+Then we export a function called `useStateContext` that calls `useContext` to access the data. We will use this function in our components in order to access values in our state.
 
 At the end of the file, we export a `StateProvider` component. This component simply returns the **provider component** returned by our context object. We pass an object that has our state and dispatch function as values to our provider component. We will wrap our child components with `StateProvider` so that they will be able to get access to the values we pass.
 
@@ -171,8 +171,8 @@ export const reducer = (state: StateContext, action: Action) => {
 };
 ```
 
-From lines 1-7, we do the needed imports and we also define the Action types needed by TypeScript for our reducer.
-Then in line 11, we export our reducer function. We are returning a new state based on the type of actions dispatched by our components. Here I just hardcoded the values for isAuthenticated props to `true` or `false`, but you can also pass dynamic values from dispatch function (called payload) and access them in your actions.
+In the first 7 lines, we do the needed imports and we also define the Action types needed by TypeScript for our reducer.
+Then we export our reducer function. We are returning a new state based on the type of actions dispatched by our components. Here I just hardcoded the values for isAuthenticated props to `true` or `false`, but you can also pass dynamic values from dispatch function (called payload) and access them in your actions.
 Something like this:
 
 ```javascript
@@ -213,7 +213,6 @@ We are returning `ContactList` that contains lists of our contacts.
 ```jsx filename=ContactList.tsx linesToHighlight=2,33,34,35
 export const ContactList: React.FunctionComponent = () => {
   const { state, dispatch } = useStateContext();
-
   const { isAuthenticated, contacts } = state;
 
   return (
