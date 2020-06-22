@@ -1,7 +1,7 @@
 import React from 'react';
 import Highlight, { defaultProps } from 'prism-react-renderer';
 import theme from 'prism-react-renderer/themes/nightOwl';
-import { Pre, LineNumber, FileName, Line, Container } from './code-block.style';
+import { Pre, FileName, Line, Container } from './code-block.style';
 
 const getLinesToHighlight = (linesToHightlight) => linesToHightlight.split(',').map((l) => +l);
 
@@ -21,7 +21,6 @@ export const CodeBlock = ({ children, className, filename, linesToHighlight }) =
                 {...getLineProps({ line, key: i })}
                 highlight={highlightLines.includes(i + 1)}
               >
-                <LineNumber>{i + 1}</LineNumber>
                 {line.map((token, key) => (
                   // eslint-disable-next-line react/no-array-index-key
                   <span key={key} {...getTokenProps({ token, key })} />
