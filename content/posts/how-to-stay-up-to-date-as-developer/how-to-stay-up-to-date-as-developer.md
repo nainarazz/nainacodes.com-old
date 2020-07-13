@@ -1,7 +1,7 @@
 ---
 title: 'How to Stay Up-To-Date as a Software Developer'
 slug: 'how-to-stay-up-to-date-as-a-software-developer'
-isPublished: false
+isPublished: true
 cover: './cover.jpg'
 imgAttributionUrl: 'https://unsplash.com/photos/mG28olYFgHI'
 imgAttributionText: 'Photo by Ross Findon on Unsplash'
@@ -17,7 +17,7 @@ If you are in the JavaScript world, I'm sure you have already heard of the phras
 
 But the software industry is moving at a very high pace in general. We are always looking for ways to improve the experience developing applications (developer experience), but also reduce the time and complexity involved in delivering software. Software developers are students for life.
 
-In this post, I want to share my ways of staying up to date in web development. Although the tips are directed more towards JavaScript developers and web development, developers using other languages will also find it helpful.
+In this post, I want to share my ways of staying up to date in web development without going insane. Although the tips are directed more towards JavaScript developers and web development, developers using other languages will also find it helpful.
 
 ## Why stay up to date
 
@@ -31,7 +31,7 @@ It is definitely ok not to know everything. It is perfectly fine not to learn ev
 
 If a new framework is released, I don't immediately go deep into learning it. I usually just get an overview of it, and know that it exists, but I don't invest much of my time learning it. I would give the framework some time to mature and get traction from other developers before getting serious with it.
 
-I would also learn technologies that is only relevant to me. If I am a web developer, why would I try to learn tools and frameworks needed for Android development? That would be crazy, right?!
+I would also learn technologies that are only relevant to me. If I am a web developer, why would I try to learn tools and frameworks needed for Android development? That would be crazy, right?!
 
 ## Tips for staying up to date
 
@@ -39,9 +39,9 @@ I would also learn technologies that is only relevant to me. If I am a web devel
 
 Subscribe to newsletters that are relevant to your career. If you are a JavaScript developer like me for example, subscribe to web development newsletters. Here are some of the newsletters I am subscribed to.
 
-1. **React Status**. This is weekly newsletter (every Wednesday) containing updates on the framework, tutorials, tools, tips and stories on the framework.
+1. **React Status**. This is weekly newsletter (every Wednesday) containing updates on the framework, tutorials, tools, tips and stories of of developers using the framework.
 2. **Frontend Focus**. This is a weekly newsletter (also every Wednesday) about HTML, CSS, browser features and updates, accessibility, and other frontend related stuffs.
-3. **JavaScript Weekly**. Another weekly newsletter (every Friday) about JavaScript, toolings, tutorials, and also frameworks.
+3. **JavaScript Weekly**. Another weekly newsletter (every Friday) about the JavaScript language, toolings, tutorials, and also frameworks.
 
 You can spend 30 minutes or an hour per week to read some of the articles in these newsletters.
 
