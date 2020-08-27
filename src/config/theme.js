@@ -19,7 +19,8 @@ const techColor = {
     react: '#5ED4F4',
     angular: '#D63B1D',
     typescript: '#007ACC',
-    gatsby: '#654095'
+    gatsby: '#654095',
+    graphql: '#DE59A4'
 };
 
 export default {
