@@ -5,7 +5,7 @@ isPublished: true
 cover: './cover.jpg'
 imgAttributionUrl: 'https://unsplash.com/photos/Vk7gajXtc90'
 imgAttributionText: 'Photo by Raphaël Biscaldi on Unsplash'
-date: '2020-08-26'
+date: '2020-08-31'
 lastUpdated: '2020-08-31'
 category: 'code'
 tags:
