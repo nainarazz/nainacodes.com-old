@@ -3,6 +3,7 @@ import Helmet from 'react-helmet';
 import { graphql } from 'gatsby';
 import styled from 'styled-components';
 import InfiniteScroll from 'react-infinite-scroll-component';
+import { formatPosts } from '../utils/helpers';
 import Layout from '../layout/index.component';
 import config from '../../data/site-config';
 import themeColor from '../config/theme';
@@ -41,19 +42,20 @@ const Loader = styled.div`
   color: ${brand.darkShade};
 `;
 
-const pageSize = 8;
+const pageSize = 10;
 const BlogPage = ({ data }) => {
-  const allPosts = (data.allMdx && data.allMdx.edges) || [];
-  const [filteredPosts, setFilteredPosts] = useState(allPosts);
-  const [posts, setPosts] = useState(allPosts.slice(0, pageSize));
+  const postEdges = data.allMdx.edges;
+  const [filteredPosts, setFilteredPosts] = useState(() => formatPosts(postEdges));
+  const [posts, setPosts] = useState(() => formatPosts(postEdges).slice(0, pageSize));
 
   const handleSearch = (e) => {
     const searchValue = e.target.value;
-    const filtered = allPosts.filter((p) =>
+    const filtered = postEdges.filter((p) =>
       p.node.frontmatter.title.toLowerCase().includes(searchValue.toLowerCase())
     );
-    setFilteredPosts(filtered);
-    setPosts(filtered.slice(0, pageSize));
+    const formattedPosts = formatPosts(filtered);
+    setFilteredPosts(formattedPosts);
+    setPosts(formattedPosts.slice(0, pageSize));
   };
 
   const fetchNextPosts = () => {

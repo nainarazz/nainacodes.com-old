@@ -5,7 +5,7 @@ import themeColor from '../../config/theme';
 const { color } = themeColor;
 
 export const PostHeader = styled(Link)`
-  padding: 15px 0;
+  padding: 10px 0;
   display: block;
   color: ${color.body};
   &:hover {

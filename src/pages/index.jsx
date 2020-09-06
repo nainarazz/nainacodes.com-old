@@ -11,6 +11,7 @@ import themeColor from '../config/theme';
 // eslint-disable-next-line import/no-named-as-default
 import media from '../config/media';
 import projects from '../../data/projects';
+import { formatPosts } from '../utils/helpers';
 
 const { color } = themeColor;
 
@@ -87,21 +88,35 @@ const ProjectLink = styled.a`
 `;
 
 const HomePage = ({ data }) => {
-  const pageSize = 5;
-  const posts = (data.allMdx && data.allMdx.edges) || [];
+  const latestPosts = data.latestPosts.edges;
+  const popularPosts = data.popularPosts.edges;
+
+  const formattedLatestPosts = formatPosts(latestPosts);
+  const formattedPopularPosts = formatPosts(popularPosts);
+
   return (
     <>
       <Hero />
       <Layout withHeroHeader>
         <SEO />
         <Helmet title={`${config.siteTitle}`} />
+
         <Header>
           <h2>
             Latest Posts
             <Link to="/blog">View all</Link>
           </h2>
         </Header>
-        <PostListing postEdges={posts.slice(0, pageSize)} />
+        <PostListing postEdges={formattedLatestPosts} />
+
+        <Header>
+          <h2>
+            Popular Posts
+            <Link to="/blog">View all</Link>
+          </h2>
+        </Header>
+        <PostListing postEdges={formattedPopularPosts} />
+
         <Header style={{ marginBottom: '5px' }}>
           <h2>Open Source Projects</h2>
         </Header>
@@ -128,9 +143,32 @@ export default HomePage;
 
 export const query = graphql`
   query {
-    allMdx(
+    latestPosts: allMdx(
+      limit: 5
       sort: { fields: frontmatter___date, order: DESC }
       filter: { frontmatter: { isPublished: { eq: true } } }
+    ) {
+      edges {
+        node {
+          id
+          excerpt
+          fields {
+            slug
+          }
+          frontmatter {
+            date
+            title
+            category
+            tags
+          }
+        }
+      }
+    }
+
+    popularPosts: allMdx(
+      limit: 10
+      sort: { fields: frontmatter___date, order: DESC }
+      filter: { frontmatter: { isPublished: { eq: true }, category: { in: ["popular"] } } }
     ) {
       edges {
         node {

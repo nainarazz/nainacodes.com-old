@@ -17,18 +17,9 @@ const monthDictionary = {
 };
 
 const PostListing = ({ postEdges }) => {
-  const posts = postEdges.map((p) => ({
-    path: p.node.fields.slug,
-    tags: p.node.frontmatter.tags,
-    cover: p.node.frontmatter.cover,
-    title: p.node.frontmatter.title,
-    date: new Date(p.node.frontmatter.date),
-    excerpt: p.node.excerpt,
-  }));
-
   return (
     <div style={{ margin: '10px 0' }}>
-      {posts.map((post) => (
+      {postEdges.map((post) => (
         <PostHeader key={`post.title ${post.date.getTime()}`} to={post.path}>
           <Meta>
             <div className="date">
