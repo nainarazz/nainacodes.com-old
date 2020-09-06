@@ -6,10 +6,13 @@ import { graphql } from 'gatsby';
 import Layout from '../layout/index.component';
 import PostListing from '../components/post-listing/post-listing.component';
 import config from '../../data/site-config';
+import { formatPosts } from '../utils/helpers';
 
 const Category = ({ pageContext, data }) => {
   const { category } = pageContext;
   const postEdges = data.allMdx.edges;
+  const formattedPosts = formatPosts(postEdges);
+
   return (
     <Layout>
       <div className="category-container">
@@ -20,7 +23,7 @@ const Category = ({ pageContext, data }) => {
             {category}
           </span>
         </h1>
-        <PostListing postEdges={postEdges} />
+        <PostListing postEdges={formattedPosts} />
       </div>
     </Layout>
   );

@@ -4,10 +4,13 @@ import { graphql } from 'gatsby';
 import Layout from '../layout/index.component';
 import PostListing from '../components/post-listing/post-listing.component';
 import config from '../../data/site-config';
+import { formatPosts } from '../utils/helpers';
 
 const Tag = ({ pageContext, data }) => {
   const { tag } = pageContext;
   const postEdges = data.allMdx.edges;
+  const formattedPosts = formatPosts(postEdges);
+
   return (
     <Layout>
       <div className="tag-container">
@@ -17,7 +20,7 @@ const Tag = ({ pageContext, data }) => {
           <span style={{ fontSize: '0.9rem', marginLeft: '1rem', fontStyle: 'italic' }}>{tag}</span>
         </h1>
 
-        <PostListing postEdges={postEdges} />
+        <PostListing postEdges={formattedPosts} />
       </div>
     </Layout>
   );
