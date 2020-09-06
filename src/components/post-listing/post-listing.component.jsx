@@ -1,5 +1,5 @@
 import React from 'react';
-import { PostHeader, Title, DateThumbnail, Month, Day, Year } from './post-listing.style';
+import { PostHeader, Title, Meta } from './post-listing.style';
 
 const monthDictionary = {
   0: 'Jan',
@@ -27,15 +27,15 @@ const PostListing = ({ postEdges }) => {
   }));
 
   return (
-    <div>
+    <div style={{ margin: '10px 0' }}>
       {posts.map((post) => (
-        <PostHeader to={post.path} key={`post.title ${post.date.getTime()}`}>
-          <DateThumbnail>
-            <Month>{monthDictionary[post.date.getMonth()]}</Month>
-            <span> </span>
-            <Day>{post.date.getDate()}</Day>
-            <Year>{post.date.getFullYear()}</Year>
-          </DateThumbnail>
+        <PostHeader key={`post.title ${post.date.getTime()}`} to={post.path}>
+          <Meta>
+            <div className="date">
+              {monthDictionary[post.date.getMonth()]} {post.date.getDate()},{' '}
+              {post.date.getFullYear()}
+            </div>
+          </Meta>
           <Title>{post.title}</Title>
         </PostHeader>
       ))}

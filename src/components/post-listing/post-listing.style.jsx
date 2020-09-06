@@ -2,35 +2,45 @@ import styled from 'styled-components';
 import { Link } from 'gatsby';
 import themeColor from '../../config/theme';
 
-const { brand, color } = themeColor;
+const { color } = themeColor;
 
 export const PostHeader = styled(Link)`
-  display: grid;
-  grid-template-columns: 65px auto;
-  grid-column-gap: 1em;
-  border-bottom: 1px solid ${color.lightgrey};
-  color: ${color.body};
   padding: 15px 0;
+  display: block;
+  color: ${color.body};
   &:hover {
     background-color: ${color.lightgrey};
   }
 `;
 
-export const Title = styled.span``;
+export const Meta = styled.div`
+  display: flex;
+  align-items: center;
 
-export const DateThumbnail = styled.div`
-  text-align: center;
+  .date {
+    font-size: 0.8rem;
+    font-style: italic;
+  }
+
+  .tags {
+    margin: 0 10px;
+  }
 `;
 
-export const Day = styled.span``;
+export const Tag = styled(Link)`
+  margin-right: 10px;
+  margin-bottom: 10px;
+  padding: 4px;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  color: ${(props) =>
+    themeColor.techColor[props.tag] ? themeColor.color.white : themeColor.color.body};
+  background-color: ${(props) => themeColor.techColor[props.tag] || themeColor.color.lightgrey};
+`;
 
-export const Month = styled.span``;
-
-export const Year = styled.div`
-  color: ${brand.lightAccent};
-  font-weight: 600;
-  text-align: center;
-  line-height: 1;
+export const Title = styled.div`
+  font-size: 0.9rem;
 `;
 
 export const StyledLink = styled(Link)`

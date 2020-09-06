@@ -14,10 +14,16 @@ import projects from '../../data/projects';
 
 const { color } = themeColor;
 
-const Header = styled.h2`
+const Header = styled.div`
+
   display: flex;
   justify-content: space-between;
   ${media.desktop`justify-content: flex-start;`}
+  border-bottom: 1px solid ${color.lightgrey};
+
+  h2 {
+    margin-bottom: 1rem;
+  }
 
   a {
     text-decoration: none;
@@ -27,13 +33,14 @@ const Header = styled.h2`
     padding: 0.4rem 0.65rem;
     border-radius: 8px;
   }
+
 `;
 
 const ProjectContainer = styled.div`
   display: grid;
   grid-template-columns: 115px auto;
   grid-column-gap: 1em;
-  border-bottom: 1px solid ${color.lightgrey};
+  margin: 10px 0;
   margin-bottom: 15px;
   padding-bottom: 15px;
   ${media.phone`
@@ -55,6 +62,7 @@ const Description = styled.div`
   margin: 0 1rem;
   display: none;
   white-space: initial;
+  font-size: 0.9rem;
   ${media.thone`
     display: block;
     grid-template-columns: 170px auto;
@@ -87,17 +95,16 @@ const HomePage = ({ data }) => {
       <Layout withHeroHeader>
         <SEO />
         <Helmet title={`${config.siteTitle}`} />
-        <div style={{ marginBottom: 'em' }}>
-          <Header>
+        <Header>
+          <h2>
             Latest Posts
             <Link to="/blog">View all</Link>
-          </Header>
-        </div>
+          </h2>
+        </Header>
         <PostListing postEdges={posts.slice(0, pageSize)} />
-        <Header style={{ marginBottom: '5px' }}>Open Source Projects</Header>
-        <p style={{ fontSize: '0.9rem', fontStyle: 'italic' }}>
-          side projects for learning new stuff
-        </p>
+        <Header style={{ marginBottom: '5px' }}>
+          <h2>Open Source Projects</h2>
+        </Header>
 
         {projects.map((p, i) => (
           // eslint-disable-next-line react/no-array-index-key
