@@ -34,7 +34,7 @@ export const pageQuery = graphql`
     allMdx(
       limit: 1000
       sort: { fields: frontmatter___date, order: DESC }
-      filter: { frontmatter: { category: { eq: $category } } }
+      filter: { frontmatter: { category: { in: [$category] } } }
     ) {
       totalCount
       edges {

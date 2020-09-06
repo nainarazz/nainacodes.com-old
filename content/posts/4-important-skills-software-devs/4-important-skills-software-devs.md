@@ -7,7 +7,8 @@ imgAttributionUrl: 'https://coreaxis.com/why-soft-skills-training-is-still-trend
 imgAttributionText: 'Core Axis'
 date: '2020-03-11'
 lastUpdated: '2020-03-11'
-category: 'non-code'
+category:
+  - non-code
 tags:
   - soft skills
 ---

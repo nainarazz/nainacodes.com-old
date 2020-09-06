@@ -7,7 +7,8 @@ imgAttributionUrl: ''
 imgAttributionText: ''
 date: '2020-05-03'
 lastUpdated: '2020-05-03'
-category: 'opinion'
+category:
+  - opinion
 tags:
   - react
   - nextjs

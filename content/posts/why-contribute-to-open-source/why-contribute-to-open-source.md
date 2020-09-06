@@ -7,7 +7,8 @@ imgAttributionUrl: ''
 imgAttributionText: ''
 date: '2020-03-18'
 lastUpdated: '2020-03-18'
-category: 'non-code'
+category:
+  - non-code
 tags:
   - open source
 ---

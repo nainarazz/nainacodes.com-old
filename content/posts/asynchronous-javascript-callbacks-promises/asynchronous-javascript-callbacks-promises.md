@@ -7,7 +7,9 @@ imgAttributionUrl: 'https://unsplash.com/photos/9cRDDvhpBRw'
 imgAttributionText: 'Photo by Valentin Antonucci on Unsplash'
 date: '2020-06-15'
 lastUpdated: '2020-06-15'
-category: 'code'
+category:
+  - code
+  - popular
 tags:
   - javascript
 ---

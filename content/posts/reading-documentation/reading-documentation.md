@@ -7,7 +7,8 @@ imgAttributionUrl: 'https://unsplash.com/photos/tn57JI3CewI'
 imgAttributionText: 'Photo by Sharon McCutcheon on Unsplash'
 date: '2020-05-24'
 lastUpdated: '2020-05-24'
-category: 'opinion'
+category:
+  - opinion
 tags:
   - documentation
 ---

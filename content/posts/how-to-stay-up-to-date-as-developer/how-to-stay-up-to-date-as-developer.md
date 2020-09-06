@@ -7,7 +7,8 @@ imgAttributionUrl: 'https://unsplash.com/photos/mG28olYFgHI'
 imgAttributionText: 'Photo by Ross Findon on Unsplash'
 date: '2020-07-13'
 lastUpdated: '2020-07-13'
-category: 'code'
+category:
+  - code
 tags:
   - javascript
   - career

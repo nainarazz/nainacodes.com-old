@@ -7,7 +7,9 @@ imgAttributionUrl: 'https://unsplash.com/photos/xqC7hdLMpgk'
 imgAttributionText: 'Photo by fotografierende on Unsplash'
 date: '2020-04-10'
 lastUpdated: '2020-06-22'
-category: 'code'
+category:
+  - code
+  - popular
 tags:
   - react
   - typescript

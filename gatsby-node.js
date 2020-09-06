@@ -71,7 +71,9 @@ exports.createPages = async ({ graphql, actions }) => {
 
     // Generate a list of categories
     if (edge.node.frontmatter.category) {
-      categorySet.add(edge.node.frontmatter.category);
+      edge.node.frontmatter.category.forEach(cat => {
+        categorySet.add(cat);
+      })
     }
 
     // Create post pages

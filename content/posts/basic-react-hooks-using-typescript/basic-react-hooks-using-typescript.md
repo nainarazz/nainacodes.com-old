@@ -7,7 +7,9 @@ imgAttributionUrl: 'https://unsplash.com/photos/HJhGcU_IbsQ'
 imgAttributionText: 'Photo by James Wheeler on Unsplash'
 date: '2020-03-29'
 lastUpdated: '2020-03-29'
-category: 'code'
+category:
+  - code
+  - popular
 tags:
   - react
   - react hooks

@@ -7,7 +7,8 @@ imgAttributionUrl: 'https://unsplash.com/photos/9ou_pV7L2co'
 imgAttributionText: 'Photo by Michael Skok on Unsplash'
 date: '2020-05-17'
 lastUpdated: '2020-05-17'
-category: 'code'
+category:
+  - code
 tags:
   - javascript
 ---

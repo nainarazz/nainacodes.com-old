@@ -7,7 +7,9 @@ imgAttributionUrl: 'https://unsplash.com/photos/wkieEIVb1pA'
 imgAttributionText: 'Photo by Markus Spiske on Unsplash'
 date: '2020-05-10'
 lastUpdated: '2020-05-10'
-category: 'code'
+category:
+  - code
+  - popular
 tags:
   - javascript
 ---

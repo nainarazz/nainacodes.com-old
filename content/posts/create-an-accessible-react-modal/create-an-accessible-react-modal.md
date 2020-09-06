@@ -7,7 +7,9 @@ imgAttributionUrl: 'https://unsplash.com/photos/_UeY8aTI6d0'
 imgAttributionText: 'Photo by Sergey Zolkin on Unsplash'
 date: '2020-06-22'
 lastUpdated: '2020-06-22'
-category: 'code'
+category:
+  - code
+  - popular
 tags:
   - typescript
   - react
