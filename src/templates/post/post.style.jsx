@@ -62,3 +62,5 @@ export const DateUpdate = styled.div`
   font-size: 0.8rem;
   font-style: italic;
 `;
+
+export const CommentsContainer = styled.div``;

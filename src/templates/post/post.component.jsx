@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import Helmet from 'react-helmet';
 import { graphql } from 'gatsby';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
@@ -6,6 +6,7 @@ import Img from 'gatsby-image';
 import Layout from '../../layout/index.component';
 import SEO from '../../components/SEO/SEO';
 import config from '../../../data/site-config';
+import Comment from '../../components/comment/comment'
 import {
   Title,
   CoverImage,
@@ -36,12 +37,11 @@ const Post = ({ data, pageContext }) => {
   const postNode = data.mdx;
   const post = postNode.frontmatter;
   const coverImgFluid = post.cover.childImageSharp.fluid;
+  const commentBoxRef = useRef();
 
   const twitterShare = `http://twitter.com/share?text=${encodeURIComponent(post.title)}&url=${
     config.siteUrl
   }/blog/${post.slug}/&via=nr_razz`;
-
-  const blogPostUrl = `${config.siteUrl}/blog/${post.slug}`;
 
   const createdAt = new Date(post.date);
   const createdAtFormatted = `${
@@ -56,6 +56,23 @@ const Post = ({ data, pageContext }) => {
   if (!post.id) {
     post.id = slug;
   }
+
+  useEffect(() => {
+    const commentScript = document.createElement('script')
+    commentScript.async = true
+    commentScript.src = 'https://utteranc.es/client.js'
+    commentScript.setAttribute('repo', 'nainarazz/comments')
+    commentScript.setAttribute('issue-term', 'pathname')
+    commentScript.setAttribute('id', 'utterances')
+    commentScript.setAttribute('theme', 'github-light')
+    commentScript.setAttribute('crossorigin', 'anonymous')
+    if (commentBoxRef && commentBoxRef.current) {
+      commentBoxRef.current.appendChild(commentScript)
+    } else {
+      // eslint-disable-next-line no-console
+      console.log(`Error adding utterances comments on: ${commentBoxRef}`)
+    }
+  }, [])
 
   return (
     <Layout>
@@ -96,12 +113,16 @@ const Post = ({ data, pageContext }) => {
         <a
           target="_blank"
           rel="noopener noreferrer"
-          href={`https://mobile.twitter.com/search?q=${encodeURIComponent(blogPostUrl)}`}
+          href={twitterShare}
         >
-          Discuss on Twitter
+          Share on Twitter
         </a>
         <DateUpdate>Last updated: {lastUpdatedFormatted}</DateUpdate>
       </SocialLinkContainer>
+      <div>
+        <h2>Comments</h2>
+        <Comment commentBox={commentBoxRef} />
+      </div>
     </Layout>
   );
 };
