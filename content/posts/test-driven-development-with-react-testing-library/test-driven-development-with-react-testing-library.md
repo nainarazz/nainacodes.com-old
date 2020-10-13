@@ -1,7 +1,7 @@
 ---
 title: 'Test Driven Development (TDD) With React Testing Library'
 slug: 'test-driven-development-with-react-testing-library'
-isPublished: false
+isPublished: true
 cover: './cover.jpg'
 imgAttributionUrl: 'https://unsplash.com/photos/WC6MJ0kRzGw'
 imgAttributionText: 'Photo by David Travis on Unsplash'
@@ -19,15 +19,15 @@ In this tutorial, we're gonna learn how to test React apps with react-testing-li
 
 Testing your app is very important. In the software that you write, you wanna make sure that when you add a feature or refactor code, you don't break anything that has already been working. It could be time consuming to manually test everything again when you add or remove code. It could also be annoying to the user if a feature was working before and after adding a new feature, the previous feature is no longer working. To save us developers of all those troubles, we need to write automated tests.
 
-We are going to build a Todo app. The user should be able to add, remove, and check off a todo item. This is how are final app will look like.
+To demonstrate test driven development with react testing library, we are going to build a Todo app. The user should be able to add, remove, and check off a todo item. This is how are final app will look like.
 
 ![todo app final](todo-app-final-output.png)
 
-If you just want to read but just need the code, here is the [github repo](https://github.com/nainarazz/tdd-todo-demo). Here is also a [codesandbox](https://codesandbox.io/s/tdd-demo-kv7ll?file=/src/setupTests.js) you can test and play around. Note that at the time of this writing, the tests in codesandbox are not working, not because of the code itself but because of the codesandbox environment.
+If you don't want to read but just need the code, here is the [github repo](https://github.com/nainarazz/tdd-todo-demo). Here is also a [codesandbox](https://codesandbox.io/s/tdd-demo-kv7ll?file=/src/setupTests.js) you can test and play around. Note that at the time of this writing, the tests in codesandbox are not working, not because of the code itself but because of the codesandbox environment.
 
 ## Prerequisite
 
-To follow this tutorial, I assume you already know React. You know how to use the basic React hooks (useState and useEffect). You are also know HTML, CSS, and are familiar with ES6 features and syntax.
+To follow this tutorial, I assume you already know React. You know how to use the basic React hooks (useState and useEffect). You also know HTML, CSS, and are familiar with ES6 features and syntax.
 
 ## What is TDD
 
@@ -45,9 +45,9 @@ Why use react-testing-library instead of Enzyme? I really like the philosophy be
 
 > The more your tests resemble the way your software is used, the more confidence they can give you.
 
-This means that our tests should interact with our app just like a real user would do. In our Todo List app, a user would have to type in an input, and click the add button to add the item. Our test should also interact with the app in a similar way: type a todo item in the input, and click the button to add the item. Then we verify that the new item has actually been added. With react testing library, this not hard to achieve.
+This means that our tests should interact with our app just like a real user would do. For example, in our Todo app, a user would have to type in an input, and click the add button to add the item. Our test should also interact with the app in a similar way: type a todo item in the input, and click the button to add the item. Then we verify that the new item has actually been added. With react testing library, this not hard to achieve.
 
-React-testing-library also prevents us from testing implementation details of the app. The implementation details are things that users would not normally see or use. It is only known to the developers (ex. the state of your app). When you are using enzyme, you are more likely to be testing these implementation details. If you test the implementation details, your tests will break if you change/refactor the code. This is something we want to avoid.
+React-testing-library also prevents us from testing implementation details of the app. The implementation details are things that users would normally not see or use. It is only known to the developers (ex. the state of your app). When you are using enzyme, you are more likely to be testing these implementation details. If you test the implementation details, your tests will break if you change/refactor the code. This is something we want to avoid.
 
 If you want to read more about the problems with testing implementation details, here is a nice post written by Kent Dodds [(Testing implementation details)](https://kentcdodds.com/blog/testing-implementation-details).
 
@@ -105,7 +105,7 @@ Let's now get into the real coding. So, as has been said, we are going to build 
 
 Our first task is to create a todo list component that renders the list of todo items. Inside `src/components/TodoList`, we are going to create a TodoList component together with its test file.
 
-```jsx filename=src/components/TodoList.js
+```jsx filename=src/components/TodoList/TodoList.js
 import React from 'react';
 
 const TodoList = ({ todos }) => <div></div>;
@@ -115,7 +115,7 @@ export default TodoList;
 
 The TodoList component accepts a list of todos. Because we are first going to write the test before implementing the component, we are simply returning an empty `div` .
 
-```jsx filename=src/components/TodoList.test.js
+```jsx filename=src/components/TodoList/TodoList.test.js linesToHighlight=3,9
 import React from 'react';
 import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
@@ -191,7 +191,7 @@ If you run yarn test, you should get an error because we haven't implemented our
 
 Okay, so let's implement the TodoList component to make the test pass.
 
-```jsx filename=src/components/TodoList.js
+```jsx filename=src/components/TodoList/TodoList.js
 import React from 'react';
 
 const TodoList = ({ todos }) => (
@@ -255,7 +255,7 @@ describe('<App /> tests', () => {
 });
 ```
 
-In `App.js`, we are just basically fetching our list of todos from `"https://jsonplaceholder.typicode.com/todos"` and we set out todos state with the result. We are only setting the first 5 result. Then we pass our todos to the `<TodoList />` as prop.
+In `App.js`, we are just basically fetching our list of todos from `"https://jsonplaceholder.typicode.com/todos"` and we set todos state with the result. We are only setting the first 5 result. Then we pass our todos to the `<TodoList />` as prop.
 
 As for the App.test.js, we are just making sure that `<App />` renders. We are going to write more tests in here later.
 
@@ -273,13 +273,13 @@ It says that the json response of our fetch function in `useEffect` is invalid. 
 
 ![invalid json response error](invalid-json-response-error-more.png)
 
-When we are rendering our `<App />` component in our test, we are making an asynchronous call with fetch API. However, before the response is received, the test finish running and the test environment is torn down. The fetch call is unable to finish properly, and we so we get an error.
+When we are rendering our `<App />` component in our test, we are making an asynchronous call with fetch API. However, before the response is received, the test finished running and the test environment is torn down. The fetch call is unable to finish properly, and we so we get an error.
 
 So how do we solve this problem? Welcome to mocking.
 
 ### Mocking fetch API calls
 
-Mocking is creating a fake implementation of a function, method, or module. Mocking is important because we need fast tests. Making an API call will slow down our tests. Another reason is that calling APIs in a test can give inconsistent results. Sometimes it could fails because of network or server issues which we have no control.
+Mocking is creating a fake implementation of a function, method, or module. Mocking is important because we need fast tests. Making an API call will slow down our tests. Another reason is that calling APIs in a test can give inconsistent results. Sometimes it could fail because of network or server issues which we have no control.
 
 To mock the fetch API, we are going to use [jest-fetch-mock](https://www.npmjs.com/package/jest-fetch-mock). First, let us install the library.
 
@@ -385,7 +385,7 @@ Now, when you run the test again, all tests pass without warnings.
 
 Wouldn't it be better if we move the individual todo item to its own component? Let's try to improve the existing implementation of our TodoList component.
 
-```jsx filename=src/components/TodoList.js linesToHighlight=2,7
+```jsx filename=src/components/TodoList/TodoList.js linesToHighlight=2,7
 import React from 'react';
 import TodoItem from '../TodoItem/TodoItem';
 
@@ -434,7 +434,7 @@ it('should show title of todos', () => {
 
 ## Adding a new todo item
 
-A Todo List app is not a Todo List app if we cannot add a new todo item, so let us add this capability in our app. Like what we did earlier, we are first going to write a test and then do the implementation.
+A Todo app is not a Todo app if we cannot add a new todo item, so let us add this capability in our app. Like what we did earlier, we are first going to write a test and then do the implementation.
 
 ### Failing test
 
@@ -539,7 +539,7 @@ function addTodo(e) {
 
 Notice here that the title of the new item is the todo state that we saved earlier. We are also setting the saving indicator to true before fetching and setting it to false after receiving the results.
 
-Finally, we attach those handlers to the input and button. If it is saving,we display the "saving" indicator. Otherwise, we show the input and button.
+Finally, we attach those handlers to the input and button. If it is saving, we display the "saving" indicator. Otherwise, we show the input and button.
 
 ```jsx
 <div className="add-todo-form">
@@ -556,7 +556,7 @@ Finally, we attach those handlers to the input and button. If it is saving,we di
 
 If you run the test, it should all pass. The app should also work properly in the browser.
 
-Here is our App.js file.
+Here is our new App.js file.
 
 ```jsx filename=src/App.js
 import React, { useState, useEffect } from 'react';
@@ -665,7 +665,7 @@ We use the getByTestId when we cannot query something with what is visible on th
 
 Let us change our HTML markup in `<TodoItem />` to this. Let us also added css file for some styling.
 
-```jsx filename=src/components/TodoItem/TodoItem.js
+```jsx filename=src/components/TodoItem/TodoItem.js linesToHighlight=4,9
 import React from 'react';
 import styles from './TodoItem.module.css';
 
@@ -734,9 +734,9 @@ it('remove todo from list', async () => {
 });
 ```
 
-Again, nothing new in here. We render the app as usual, wait for the loading indicator to disappear, then click the 3rd remove button (we get the element through getByTestId), and then assert that the item in NOT in the document.
+Again, nothing new in here. We render the app as usual, wait for the loading indicator to disappear, then click the 3rd remove button (we get the element through getByTestId), and then assert that the item is NOT in the document.
 
-Inside `App.js`, let us add add a `removeTodo()` function and pass it down to our `<TodoList />` then to `<TodoItem />` .Our `removeTodo` is just going to filter our todos and set a new state.
+Inside `App.js`, let us add add a `removeTodo()` function and pass it down to our `<TodoList />`, then to `<TodoItem />` .Our `removeTodo` is just going to filter our todos and set a new state.
 
 ```jsx filename=App.js linesToHighlight=9
 // ...other codes
@@ -763,7 +763,7 @@ return (
 );
 ```
 
-```jsx filename=src/components/TodoList/TodoList.js
+```jsx filename=src/components/TodoList/TodoList.js linesToHighlight=1,4
 const TodoList = ({ todos, removeHandler }) => (
   <div>
     {todos.map((t, i) => (
@@ -851,7 +851,7 @@ it('todo item should be crossed out after completing', async () => {
 
 We use the `toHaveClass` matcher of Jest to know that the class has been applied to an element.
 
-Inside App.js, we are going to add the updateTodo function and pass it to our TodoItem component.
+To make the test pass, inside App.js, we are going to add the updateTodo function and pass it to our TodoItem component.
 
 ```jsx filename=App.js linesToHighlight=19
 // other code above
@@ -899,9 +899,11 @@ const TodoList = ({ todos, removeHandler, updateTodo }) => (
 );
 ```
 
-Congrats 🎉! Our TodoList is finally complete. And it is fully tested. We have a total of 3 test suites and 7 tests cases in all. We can have confidence that if we refactor of change something, our app won't break.
+And yes, our test pass.
 
 ![complete tests](complete-test.png)
+
+Congrats 🎉! Our TodoList is finally complete. And it is fully tested. We have a total of 3 test suites and 7 tests cases in all. We can have confidence that if we refactor of change something, our app won't break.
 
 ## Summary
 
