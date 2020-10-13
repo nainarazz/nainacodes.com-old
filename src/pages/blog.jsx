@@ -73,7 +73,7 @@ const BlogPage = ({ data }) => {
         <h1>Articles</h1>
         <SearchContainer>
           <Search type="text" placeholder="type to search blog posts" onChange={handleSearch} />
-          <FilterCount>{posts.length}</FilterCount>
+          <FilterCount>{postEdges.length}</FilterCount>
         </SearchContainer>
         <InfiniteScroll
           dataLength={filteredPosts.length}
