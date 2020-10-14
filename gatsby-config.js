@@ -123,7 +123,7 @@ module.exports = {
         icon: 'static/logos/logo-96.png'
       },
     },
-    'gatsby-plugin-remove-serviceworker',
+    'gatsby-plugin-offline',
     {
       resolve: 'gatsby-plugin-feed',
       options: {
