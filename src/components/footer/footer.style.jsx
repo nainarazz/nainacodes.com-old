@@ -18,7 +18,7 @@ export const NoticeContainer = styled.div`
   justify-content: flex-end;
   ${media.thone`justify-content: initial;`}
 
-  h4 {
+  p {
     line-height: 2;
     margin: 0;
     font-size: 0.9rem;

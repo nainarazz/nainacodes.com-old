@@ -11,7 +11,7 @@ const Footer = ({ config }) => {
   return (
     <StyledFooter>
       <NoticeContainer>
-        <h4>{copyright}</h4>
+        <p>{copyright}</p>
       </NoticeContainer>
       <UserLinks config={config} labeled />
     </StyledFooter>
