@@ -1,12 +1,12 @@
 ---
-title: 'Test Driven Development (TDD) With React Testing Library'
-slug: 'test-driven-development-with-react-testing-library'
+title: 'Test React Apps With React Testing Library'
+slug: 'test-react-apps-with-react-testing-library'
 isPublished: true
 cover: './cover.jpg'
 imgAttributionUrl: 'https://unsplash.com/photos/WC6MJ0kRzGw'
 imgAttributionText: 'Photo by David Travis on Unsplash'
 date: '2020-10-14'
-lastUpdated: '2020-10-14'
+lastUpdated: '2020-10-30'
 category:
   - code
 tags:
