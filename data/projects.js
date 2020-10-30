@@ -2,7 +2,7 @@ const projects = [
     {
         name: 'Gourmetic',
         github: 'https://github.com/nainarazz/gourmetic',
-        website: 'https://gourmetic.nainarazz.now.sh',
+        website: '',
         icon: '🍏',
         projectImageUrl: '',
         imageAlt: 'gourmetic food recipes',
