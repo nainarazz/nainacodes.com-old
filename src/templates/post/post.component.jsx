@@ -80,10 +80,6 @@ const Post = ({ data, pageContext }) => {
         <title>{`${post.title} | ${config.siteTitle}`}</title>
       </Helmet>
       <SEO postPath={slug} postNode={postNode} postSEO />
-      <CoverImage>
-        <Img fluid={coverImgFluid} />
-        <a href={post.imgAttributionUrl}>{post.imgAttributionText}</a>
-      </CoverImage>
       <Title>{post.title}</Title>
       <PostMeta>
         <span>{createdAtFormatted}</span>
@@ -107,6 +103,11 @@ const Post = ({ data, pageContext }) => {
           ))}
         </TagsContainer>
       </PostMeta>
+
+      <CoverImage>
+        <Img fluid={coverImgFluid} />
+        <a href={post.imgAttributionUrl}>{post.imgAttributionText}</a>
+      </CoverImage>
 
       <MDXRenderer>{postNode.body}</MDXRenderer>
       <SocialLinkContainer>
@@ -141,7 +142,7 @@ export const pageQuery = graphql`
         slug
         cover {
           childImageSharp {
-            fluid(maxWidth: 800, maxHeight: 600) {
+            fluid(maxWidth: 800, maxHeight: 400) {
               ...GatsbyImageSharpFluid
             }
           }

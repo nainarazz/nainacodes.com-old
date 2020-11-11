@@ -6,6 +6,7 @@ import media from '../../config/media';
 
 export const CoverImage = styled.div`
   text-align: center;
+  margin-bottom: 3rem;
   a {
     padding: 20px 0;
   }
@@ -19,7 +20,7 @@ export const Title = styled.h1`
 
 export const PostMeta = styled.div`
   font-size: 0.8rem;
-  margin-bottom: 3rem;
+  margin-bottom: 1rem;
 `;
 
 export const TagsContainer = styled.div`
