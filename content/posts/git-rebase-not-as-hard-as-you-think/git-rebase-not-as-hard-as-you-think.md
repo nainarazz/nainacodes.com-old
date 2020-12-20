@@ -1,7 +1,7 @@
 ---
 title: 'Git Rebase, Not As Hard As You Think'
 slug: 'git-rebase-not-as-hard-as-you-think'
-isPublished: false
+isPublished: true
 cover: './cover.jpg'
 imgAttributionUrl: 'https://unsplash.com/photos/u0vgcIOQG08'
 imgAttributionText: 'Photo by Jens Lelie on Unsplash'
@@ -13,15 +13,15 @@ tags:
   - git
 ---
 
-When we are just starting out with Git, we usually first learn git commands like `add`, `commit`, `pull`, and `push`. Then as we gain more confidence, we learn `git rebase`. This is because git rebase can be intimidating, even for experienced developers. But once you get to know the rules, I think it will be less daunting to use. It is a powerful tool that we can take advantage of to create a beautiful commit history. Let us see in this post what is git rebase and how we can take advantage of this powerful feature.
+When we are just starting out with git, we usually first learn git commands like `add`, `commit`, `pull`, and `push`. Then as we gain more confidence, we learn `git rebase`. Git rebase can be intimidating, even for experienced developers. But once you get to know the rules, I think it will be less daunting to use. It is a powerful tool that we can take advantage of to control commit history. Let us see in this post what git rebase is and how we can use it.
 
 ## git rebase vs git merge
 
 Git rebase is often considered as an alternative to git merge. When we rebase, we are applying commits of one branch on top of the commits of another branch.
 
-It is best understood with an example. Let us say you are developing a new feature for some app, so you `checkout -b feature` branch from `dev` branch. You work on your stuff and add your commits. Meanwhile, other developers have also worked on their stuff, and now you want to bring their changes into your branch. To do that, you could either do a merge or a rebase.
+It is best understood with an example. Let us say you are developing a new feature for some app, so you `git checkout -b feature` branch from `dev` branch. You work on your stuff and add your commits. Meanwhile, other developers have also worked on their stuff, and now you want to bring their changes into your branch. To do that, you could either do a merge or a rebase.
 
-Here is how our branch might look like after working on a feature branch.
+First, here is how our branch might look like after checking out a feature branch.
 
 ![commit history before rebase](./before_rebase.png)
 
@@ -37,13 +37,13 @@ On the other hand, when we `rebase`, here is what happens.
 
 Our new commits in the feature branch are being added at the end of the commits of the dev branch, resulting in a linear commit history.
 
-For the example above, the line of command to rebase would be like this.
+For the example above, assuming you are in the `feature` branch, the line of command to rebase would be like this.
 
 ```bash
 git rebase dev feature
 ```
 
-But it is more common to first checkout to the branch, and then rebase from there.
+It is more common to first checkout to the branch, and then rebase from there.
 
 ```bash
 git checkout feature
@@ -64,7 +64,7 @@ The golden rule of rebase is that you should **NOT** use rebase on a public bran
 
 ## Interactive rebase
 
-Interactive rebase is what makes rebase feature really powerful. With interactive rebase, you can reorder, edit, delete, or combine commit messages together. You have complete control on how you want your commit history to look like.
+Interactive rebase is what makes rebase really powerful. With interactive rebase, you can reorder, edit, delete, or combine commit messages together. You have complete control on how you want your commit history to look like.
 
 To run rebase in interactive mode, pass the `-i` flag with the command (i.e `git rebase -i feature dev`).
 
@@ -76,9 +76,9 @@ The commits are ordered from the latest to the oldest. When we run interactive r
 
 ![git rebase interactive](./interactive_rebase.png)
 
-The commits are now shown in reverse order, meaning the oldest commits come first. Each commit has a `pick` command followed by the hash of the commit. By picking, you are saying that you want to include this commit. There are other commands in the list that you can use beside `pick`.
+The commits are now shown in reverse order, meaning the oldest commits come first. Each commit has a `pick` command followed by the hash of the commit. By picking, we are saying that we want to include this commit. There are other commands in the list that we could use besides `pick`.
 
-If you wanna change the commit message for example, you can use `reword`. If you wanna combine multiple commits into a single commit, you can use `squash`. If you wanna reorder, you simply move the commits into the desired order.
+If you wanna change the commit message, for example, you can use `reword`. If you wanna combine multiple commits into a single commit, you can use `squash`. If you wanna reorder, you simply move the commits into the desired order.
 
 ![git rebase interactive commit messages](./interactive_rebase_modify_commits.png)
 
