@@ -45,13 +45,15 @@ module.exports = {
               maxWidth: 800,
             },
           },
-        ]
+          'gatsby-remark-autolink-headers',
+        ],
       },
     },
     {
       resolve: 'gatsby-transformer-remark',
       options: {
         plugins: [
+          'gatsby-remark-autolink-headers',
           {
             resolve: `gatsby-remark-relative-images`,
           },
@@ -65,7 +67,6 @@ module.exports = {
             resolve: 'gatsby-remark-responsive-iframe',
           },
           'gatsby-remark-copy-linked-files',
-          'gatsby-remark-autolink-headers'
         ],
       },
     },
@@ -79,7 +80,7 @@ module.exports = {
       resolve: `gatsby-plugin-typography`,
       options: {
         pathToConfigModule: `src/config/typography`,
-        omitGoogleFont: true
+        omitGoogleFont: true,
       },
     },
     {
@@ -120,7 +121,7 @@ module.exports = {
             type: 'image/png',
           },
         ],
-        icon: 'static/logos/logo-96.png'
+        icon: 'static/logos/logo-96.png',
       },
     },
     'gatsby-plugin-offline',
