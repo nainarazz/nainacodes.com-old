@@ -14,7 +14,7 @@ const SEO = ({ postNode, postPath, postSEO }) => {
     const postMeta = postNode.frontmatter;
     ({ title } = postMeta);
     description = postMeta.description ? postMeta.description : postNode.excerpt;
-    image = postMeta.cover.childImageSharp.fluid.src;
+    image = postMeta.cover ? postMeta.cover.childImageSharp.fluid.src : '';
     postURL = urljoin(config.siteUrl, config.pathPrefix, postPath);
   } else {
     title = config.siteTitle;

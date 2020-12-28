@@ -6,7 +6,7 @@ import Img from 'gatsby-image';
 import Layout from '../../layout/index.component';
 import SEO from '../../components/SEO/SEO';
 import config from '../../../data/site-config';
-import Comment from '../../components/comment/comment'
+import Comment from '../../components/comment/comment';
 import {
   Title,
   CoverImage,
@@ -36,7 +36,8 @@ const Post = ({ data, pageContext }) => {
   const { slug } = pageContext;
   const postNode = data.mdx;
   const post = postNode.frontmatter;
-  const coverImgFluid = post.cover.childImageSharp.fluid;
+  const tags = post.tags || [];
+  const coverImgFluid = post.cover && post.cover.childImageSharp.fluid;
   const commentBoxRef = useRef();
 
   const twitterShare = `http://twitter.com/share?text=${encodeURIComponent(post.title)}&url=${
@@ -58,21 +59,21 @@ const Post = ({ data, pageContext }) => {
   }
 
   useEffect(() => {
-    const commentScript = document.createElement('script')
-    commentScript.async = true
-    commentScript.src = 'https://utteranc.es/client.js'
-    commentScript.setAttribute('repo', 'nainarazz/comments')
-    commentScript.setAttribute('issue-term', 'pathname')
-    commentScript.setAttribute('id', 'utterances')
-    commentScript.setAttribute('theme', 'github-light')
-    commentScript.setAttribute('crossorigin', 'anonymous')
+    const commentScript = document.createElement('script');
+    commentScript.async = true;
+    commentScript.src = 'https://utteranc.es/client.js';
+    commentScript.setAttribute('repo', 'nainarazz/comments');
+    commentScript.setAttribute('issue-term', 'pathname');
+    commentScript.setAttribute('id', 'utterances');
+    commentScript.setAttribute('theme', 'github-light');
+    commentScript.setAttribute('crossorigin', 'anonymous');
     if (commentBoxRef && commentBoxRef.current) {
-      commentBoxRef.current.appendChild(commentScript)
+      commentBoxRef.current.appendChild(commentScript);
     } else {
       // eslint-disable-next-line no-console
-      console.log(`Error adding utterances comments on: ${commentBoxRef}`)
+      console.log(`Error adding utterances comments on: ${commentBoxRef}`);
     }
-  }, [])
+  }, []);
 
   return (
     <Layout>
@@ -95,7 +96,7 @@ const Post = ({ data, pageContext }) => {
           ・share
         </a>
         <TagsContainer>
-          {post.tags.map((t, i) => (
+          {tags.map((t, i) => (
             // eslint-disable-next-line react/no-array-index-key
             <Tag key={i} tag={t} to={`/tags/${t}`}>
               {t}
@@ -104,18 +105,16 @@ const Post = ({ data, pageContext }) => {
         </TagsContainer>
       </PostMeta>
 
-      <CoverImage>
-        <Img fluid={coverImgFluid} />
-        <a href={post.imgAttributionUrl}>{post.imgAttributionText}</a>
-      </CoverImage>
+      {coverImgFluid ? (
+        <CoverImage>
+          <Img fluid={coverImgFluid} />
+          <a href={post.imgAttributionUrl}>{post.imgAttributionText}</a>
+        </CoverImage>
+      ) : null}
 
       <MDXRenderer>{postNode.body}</MDXRenderer>
       <SocialLinkContainer>
-        <a
-          target="_blank"
-          rel="noopener noreferrer"
-          href={twitterShare}
-        >
+        <a target="_blank" rel="noopener noreferrer" href={twitterShare}>
           Share on Twitter
         </a>
         <DateUpdate>Last updated: {lastUpdatedFormatted}</DateUpdate>
