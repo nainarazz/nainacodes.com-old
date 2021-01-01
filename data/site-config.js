@@ -50,7 +50,7 @@ const config = {
       iconUrl: '/icons/gmail.png',
     },
   ],
-  copyright: '© 2020. Naina Razafindrabiby', // Copyright string for the footer of the website and RSS feed.
+  copyright: '© 2021. Naina Razafindrabiby', // Copyright string for the footer of the website and RSS feed.
   themeColor: '#ad5389', // Used for setting manifest and progress theme colors.
   backgroundColor: '#F2ECEA', // Used for setting manifest background color.
 };
