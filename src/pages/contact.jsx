@@ -34,12 +34,6 @@ export const Contact = () => {
         <li>
           Email: <a href="mailto:nainacodes@gmail.com">naina razafindrabiby</a>
         </li>
-        <li>
-          Resume:{' '}
-          <a href="https://docs.google.com/document/d/1SX8ou3-uwcEK0hTY4cch4gL3dQWmbG_YjlPdoqYWSS4/edit?usp=sharing">
-            naina razafindrabiby
-          </a>
-        </li>
       </ul>
     </Layout>
   );
