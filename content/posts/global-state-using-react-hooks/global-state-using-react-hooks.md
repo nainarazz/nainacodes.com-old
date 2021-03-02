@@ -13,7 +13,7 @@ category:
 tags:
   - react
   - typescript
-  - react hooks
+  - react-hooks
 ---
 
 In this post, I will show you how to create a global state management without using a third party library like Redux.

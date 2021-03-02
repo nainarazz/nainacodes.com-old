@@ -12,7 +12,7 @@ category:
   - popular
 tags:
   - react
-  - react hooks
+  - react-hooks
   - typescript
 ---
 
