@@ -3,6 +3,7 @@ import Helmet from 'react-helmet';
 import { graphql } from 'gatsby';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import Img from 'gatsby-image';
+import NewsletterButton from '../../components/newsletter-button/newsletter-button';
 import Layout from '../../layout/index.component';
 import SEO from '../../components/SEO/SEO';
 import config from '../../../data/site-config';
@@ -15,6 +16,7 @@ import {
   DateUpdate,
   SocialLinkContainer,
   PostMeta,
+  ActionLinksContainer,
 } from './post.style';
 
 const monthDictionary = {
@@ -113,12 +115,15 @@ const Post = ({ data, pageContext }) => {
       ) : null}
 
       <MDXRenderer>{postNode.body}</MDXRenderer>
-      <SocialLinkContainer>
-        <a target="_blank" rel="noopener noreferrer" href={twitterShare}>
-          Share on Twitter
-        </a>
-        <DateUpdate>Last updated: {lastUpdatedFormatted}</DateUpdate>
-      </SocialLinkContainer>
+      <ActionLinksContainer>
+        <NewsletterButton />
+        <SocialLinkContainer>
+          <a target="_blank" rel="noopener noreferrer" href={twitterShare}>
+            Share on Twitter
+          </a>
+          <DateUpdate>Last updated: {lastUpdatedFormatted}</DateUpdate>
+        </SocialLinkContainer>
+      </ActionLinksContainer>
       <div>
         <h2>Comments</h2>
         <Comment commentBox={commentBoxRef} />

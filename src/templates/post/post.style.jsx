@@ -64,4 +64,9 @@ export const DateUpdate = styled.div`
   font-style: italic;
 `;
 
-export const CommentsContainer = styled.div``;
+export const ActionLinksContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  ${media.tablet`flex-direction: row;`}
+`;

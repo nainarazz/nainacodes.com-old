@@ -9,10 +9,11 @@ import PostListing from '../components/post-listing/post-listing.component';
 import themeColor from '../config/theme';
 // eslint-disable-next-line import/no-named-as-default
 import media from '../config/media';
+import NewsletterButton from '../components/newsletter-button/newsletter-button';
 import projects from '../../data/projects';
 import { formatPosts } from '../utils/helpers';
 
-const { color, brand } = themeColor;
+const { color } = themeColor;
 
 const Header = styled.div`
 
@@ -85,17 +86,6 @@ const ProjectLink = styled.a`
     background: ${color.purple};
   }
 `;
-
-const NewsletterButton = styled.a`
-  background: ${brand.darkShade};
-  padding: 1rem 1.5rem;
-  margin: 0.8rem 0;
-  display: inline-block;
-  border: 1px solid ${brand.darkShade};
-  border-radius: 8px;
-  color: ${color.white};
-`;
-
 const NewsletterDescription = styled.p`
   font-size: 0.9rem;
   margin-bottom: 1rem;
@@ -152,16 +142,7 @@ const HomePage = ({ data }) => {
           <h2>Newsletter</h2>
         </Header>
         <NewsletterDescription>Don&apos;t miss out on my new stuff!</NewsletterDescription>
-        <NewsletterButton
-          target="_blank"
-          rel="noopener noreferrer"
-          href="https://nainarazafindrabiby.substack.com/subscribe"
-        >
-          <span className="emoji" role="img" aria-labelledby="newsletter">
-            📬
-          </span>{' '}
-          Join Newsletter
-        </NewsletterButton>
+        <NewsletterButton />
       </Layout>
     </>
   );
