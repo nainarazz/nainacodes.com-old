@@ -5,7 +5,6 @@ import styled from 'styled-components';
 import Layout from '../layout/index.component';
 import config from '../../data/site-config';
 import SEO from '../components/SEO/SEO';
-import Hero from '../components/hero/hero.component';
 import PostListing from '../components/post-listing/post-listing.component';
 import themeColor from '../config/theme';
 // eslint-disable-next-line import/no-named-as-default
@@ -111,7 +110,6 @@ const HomePage = ({ data }) => {
 
   return (
     <>
-      <Hero />
       <Layout withHeroHeader>
         <SEO />
         <Helmet title={`${config.siteTitle}`} />

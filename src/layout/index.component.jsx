@@ -5,6 +5,7 @@ import { MDXProvider } from '@mdx-js/react';
 import config from '../../data/site-config';
 import NavBar from '../components/navbar/navbar.component';
 import { LayoutContainer } from './index.style';
+import Hero from '../components/hero/hero.component';
 import Footer from '../components/footer/footer.component';
 import { CodeBlock } from '../components/code-block/code-block.component';
 import themeColor from '../config/theme';
@@ -49,15 +50,18 @@ const components = {
 const MainLayout = ({ children, withHeroHeader }) => {
   return (
     <>
-      <Helmet>
-        <meta name="description" content={config.siteDescription} />
-        <html lang="en" />
-      </Helmet>
       <NavBar />
-      <LayoutContainer withHeroHeader={withHeroHeader}>
-        <GlobalStyle />
-        <MDXProvider components={components}>{children}</MDXProvider>
-      </LayoutContainer>
+      <main>
+        <Helmet>
+          <meta name="description" content={config.siteDescription} />
+          <html lang="en" />
+        </Helmet>
+        {withHeroHeader && <Hero />}
+        <LayoutContainer withHeroHeader={withHeroHeader}>
+          <GlobalStyle />
+          <MDXProvider components={components}>{children}</MDXProvider>
+        </LayoutContainer>
+      </main>
       <Footer config={config} />
     </>
   );

@@ -6,7 +6,7 @@ import LinkWithActive from './link-with-active.component';
 
 const { brand, color } = themeColor;
 
-export const Container = styled.div`
+export const Container = styled.nav`
   position: fixed;
   z-index: 400;
   background-color: #fff;

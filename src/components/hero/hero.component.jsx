@@ -6,7 +6,7 @@ const { techColor } = theme;
 
 const Hero = () => {
   return (
-    <>
+    <section>
       <HeaderColor>
         <Content>
           <Intro>
@@ -22,7 +22,7 @@ const Hero = () => {
           <Photo src="/images/profile-pic.png" alt="picture of myself" />
         </Content>
       </HeaderColor>
-    </>
+    </section>
   );
 };
 
