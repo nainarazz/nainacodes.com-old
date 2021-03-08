@@ -1,7 +1,7 @@
 ---
 title: 'What is the new Next.js Image Component?'
 slug: 'next-js-image-component'
-isPublished: false
+isPublished: true
 cover: './cover.jpeg'
 imgAttributionUrl: 'https://unsplash.com/photos/IuLgi9PWETU/info'
 imgAttributionText: 'Photo by Danielle MacInnes on Unsplash'
