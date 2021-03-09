@@ -22,10 +22,10 @@ It is important to have different sizes of images for your website. If users are
 
 You need to load the appropriate image depending on the screen size and resolutions.
 
-To make images responsive using the `img` tah, you would usually do something like this.
+To make images responsive using the `img` tag, you would usually do something like this.
 
 ```jsx
-<img src="small.jpg" srcset="medium.jpg 1000w, large.jpg 2000w" alt="my-image">
+<img src="small.jpg" srcset="medium.jpg 1000w, large.jpg 2000w" alt="my-image" />
 ```
 
 The `srcset` attribute figures out which of the images is best for the browser resolution, but you need to have different image sizes.
