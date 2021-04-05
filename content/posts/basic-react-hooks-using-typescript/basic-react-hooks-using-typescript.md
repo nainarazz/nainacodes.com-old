@@ -180,7 +180,7 @@ const Person: React.FunctionComponent<Person> = (props) => {
 
   useEffect(() => {
     console.log('effect will always run');
-  }, []);
+  });
 
   useEffect(() => {
     console.log('effect will run if age has changed');
