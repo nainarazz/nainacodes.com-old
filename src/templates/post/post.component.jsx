@@ -3,7 +3,6 @@ import Helmet from 'react-helmet';
 import { graphql } from 'gatsby';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import { GatsbyImage } from 'gatsby-plugin-image';
-import NewsletterButton from '../../components/newsletter-button/newsletter-button';
 import Layout from '../../layout/index.component';
 import SEO from '../../components/SEO/SEO';
 import config from '../../../data/site-config';
@@ -116,7 +115,6 @@ const Post = ({ data, pageContext }) => {
 
       <MDXRenderer>{postNode.body}</MDXRenderer>
       <ActionLinksContainer>
-        <NewsletterButton />
         <SocialLinkContainer>
           <a target="_blank" rel="noopener noreferrer" href={twitterShare}>
             Share on Twitter
