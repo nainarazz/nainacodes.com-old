@@ -23,29 +23,27 @@ const NavBar = () => {
   });
 
   return (
-    <>
-      <Container shouldShowShadow={shouldShowShadow} shouldHideHeader={shouldHideHeader}>
-        <Nav>
-          <Logo>
-            <Link to="/">
-              <img src="/logos/logo-96.png" alt="blog logo" />
-              <span>Naina Razafindrabiby</span>
-            </Link>
-          </Logo>
-          <MenuItems>
-            <StyledLink to="/about" activeClassName="active">
-              <span>About</span>
-            </StyledLink>
-            <StyledLink to="/blog" activeClassName="active">
-              <span>Blog</span>
-            </StyledLink>
-            <StyledLink to="/contact" activeClassName="active">
-              <span>Contact</span>
-            </StyledLink>
-          </MenuItems>
-        </Nav>
-      </Container>
-    </>
+    <Container shouldShowShadow={shouldShowShadow} shouldHideHeader={shouldHideHeader}>
+      <Nav>
+        <Logo>
+          <Link to="/">
+            <img src="/logos/logo-96.png" alt="blog logo" />
+            <span>Naina Razafindrabiby</span>
+          </Link>
+        </Logo>
+        <MenuItems>
+          <StyledLink to="/about" activeClassName="active">
+            <span>About</span>
+          </StyledLink>
+          <StyledLink to="/blog" activeClassName="active">
+            <span>Blog</span>
+          </StyledLink>
+          <StyledLink to="/contact" activeClassName="active">
+            <span>Contact</span>
+          </StyledLink>
+        </MenuItems>
+      </Nav>
+    </Container>
   );
 };
 

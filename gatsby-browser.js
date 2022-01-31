@@ -1,9 +1,9 @@
-exports.onInitialClientRender = () => {
-    // eslint-disable-next-line global-require
-    require('typeface-roboto-slab');
-    // eslint-disable-next-line global-require
-    require('typeface-roboto');
-}
+// eslint-disable-next-line import/no-import-module-exports
+require('@fontsource/roboto-slab');
+// exports.onInitialClientRender = () => {
+//     // eslint-disable-next-line global-require
+//     // import "@fontsource/roboto-slab"
+// }
 
 exports.onServiceWorkerUpdateReady = () => {
     // eslint-disable-next-line no-alert

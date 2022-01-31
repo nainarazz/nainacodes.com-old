@@ -2,7 +2,7 @@ import React, { useRef, useEffect } from 'react';
 import Helmet from 'react-helmet';
 import { graphql } from 'gatsby';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
-import Img from 'gatsby-image';
+import { GatsbyImage } from 'gatsby-plugin-image';
 import NewsletterButton from '../../components/newsletter-button/newsletter-button';
 import Layout from '../../layout/index.component';
 import SEO from '../../components/SEO/SEO';
@@ -39,7 +39,7 @@ const Post = ({ data, pageContext }) => {
   const postNode = data.mdx;
   const post = postNode.frontmatter;
   const tags = post.tags || [];
-  const coverImgFluid = post.cover && post.cover.childImageSharp.fluid;
+  const coverImg = post.cover && post.cover.childImageSharp.gatsbyImageData;
   const commentBoxRef = useRef();
 
   const twitterShare = `http://twitter.com/share?text=${encodeURIComponent(post.title)}&url=${
@@ -107,9 +107,9 @@ const Post = ({ data, pageContext }) => {
         </TagsContainer>
       </PostMeta>
 
-      {coverImgFluid ? (
+      {coverImg ? (
         <CoverImage>
-          <Img fluid={coverImgFluid} />
+          <GatsbyImage image={coverImg} alt={post.imgAttributionText} />
           <a href={post.imgAttributionUrl}>{post.imgAttributionText}</a>
         </CoverImage>
       ) : null}
@@ -146,9 +146,7 @@ export const pageQuery = graphql`
         slug
         cover {
           childImageSharp {
-            fluid(maxWidth: 800, maxHeight: 400) {
-              ...GatsbyImageSharpFluid
-            }
+            gatsbyImageData(width: 800, height: 400, layout: CONSTRAINED)
           }
         }
         imgAttributionUrl

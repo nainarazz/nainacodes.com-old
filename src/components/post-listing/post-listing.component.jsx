@@ -16,22 +16,19 @@ const monthDictionary = {
   11: 'Dec',
 };
 
-const PostListing = ({ postEdges }) => {
-  return (
-    <div style={{ margin: '10px 0' }}>
-      {postEdges.map((post) => (
-        <PostHeader key={`post.title ${post.date.getTime()}`} to={post.path}>
-          <Meta>
-            <div className="date">
-              {monthDictionary[post.date.getMonth()]} {post.date.getDate()},{' '}
-              {post.date.getFullYear()}
-            </div>
-          </Meta>
-          <Title>{post.title}</Title>
-        </PostHeader>
-      ))}
-    </div>
-  );
-};
+const PostListing = ({ postEdges }) => (
+  <div style={{ margin: '10px 0' }}>
+    {postEdges.map((post) => (
+      <PostHeader key={`post.title ${post.date.getTime()}`} to={post.path}>
+        <Meta>
+          <div className="date">
+            {monthDictionary[post.date.getMonth()]} {post.date.getDate()}, {post.date.getFullYear()}
+          </div>
+        </Meta>
+        <Title>{post.title}</Title>
+      </PostHeader>
+    ))}
+  </div>
+);
 
 export default PostListing;

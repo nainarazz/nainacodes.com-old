@@ -18,6 +18,7 @@ const GlobalStyle = createGlobalStyle`
     body {
         margin: 0;
         padding: 0;
+        font-family: 'Roboto Slab';
         color: ${themeColor.color.body};
     }
 
@@ -47,24 +48,22 @@ const components = {
   a: (props) => <a {...props} style={{ textDecoration: 'underline' }} />,
 };
 
-const MainLayout = ({ children, withHeroHeader }) => {
-  return (
-    <>
-      <NavBar />
-      <main>
-        <Helmet>
-          <meta name="description" content={config.siteDescription} />
-          <html lang="en" />
-        </Helmet>
-        {withHeroHeader && <Hero />}
-        <LayoutContainer withHeroHeader={withHeroHeader}>
-          <GlobalStyle />
-          <MDXProvider components={components}>{children}</MDXProvider>
-        </LayoutContainer>
-      </main>
-      <Footer config={config} />
-    </>
-  );
-};
+const MainLayout = ({ children, withHeroHeader }) => (
+  <>
+    <NavBar />
+    <main>
+      <Helmet>
+        <meta name="description" content={config.siteDescription} />
+        <html lang="en" />
+      </Helmet>
+      {withHeroHeader && <Hero />}
+      <LayoutContainer withHeroHeader={withHeroHeader}>
+        <GlobalStyle />
+        <MDXProvider components={components}>{children}</MDXProvider>
+      </LayoutContainer>
+    </main>
+    <Footer config={config} />
+  </>
+);
 
 export default MainLayout;

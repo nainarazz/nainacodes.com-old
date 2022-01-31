@@ -9,14 +9,12 @@ import PostListing from '../components/post-listing/post-listing.component';
 import themeColor from '../config/theme';
 // eslint-disable-next-line import/no-named-as-default
 import media from '../config/media';
-import NewsletterButton from '../components/newsletter-button/newsletter-button';
 import projects from '../../data/projects';
 import { formatPosts } from '../utils/helpers';
 
 const { color } = themeColor;
 
 const Header = styled.div`
-
   display: flex;
   justify-content: space-between;
   ${media.desktop`justify-content: flex-start;`}
@@ -34,7 +32,6 @@ const Header = styled.div`
     padding: 0.4rem 0.65rem;
     border-radius: 8px;
   }
-
 `;
 
 const ProjectContainer = styled.div`
@@ -86,10 +83,6 @@ const ProjectLink = styled.a`
     background: ${color.purple};
   }
 `;
-const NewsletterDescription = styled.p`
-  font-size: 0.9rem;
-  margin-bottom: 1rem;
-`;
 
 const HomePage = ({ data }) => {
   const latestPosts = data.latestPosts.edges;
@@ -99,52 +92,44 @@ const HomePage = ({ data }) => {
   const formattedPopularPosts = formatPosts(popularPosts);
 
   return (
-    <>
-      <Layout withHeroHeader>
-        <SEO />
-        <Helmet title={`${config.siteTitle}`} />
+    <Layout withHeroHeader>
+      <SEO />
+      <Helmet title={`${config.siteTitle}`} />
 
-        <Header>
-          <h2>
-            Latest Posts
-            <Link to="/blog">View all</Link>
-          </h2>
-        </Header>
-        <PostListing postEdges={formattedLatestPosts} />
+      <Header>
+        <h2>
+          Latest Posts
+          <Link to="/blog">View all</Link>
+        </h2>
+      </Header>
+      <PostListing postEdges={formattedLatestPosts} />
 
-        <Header>
-          <h2>
-            Popular Posts
-            <Link to="/blog">View all</Link>
-          </h2>
-        </Header>
-        <PostListing postEdges={formattedPopularPosts} />
+      <Header>
+        <h2>
+          Popular Posts
+          <Link to="/blog">View all</Link>
+        </h2>
+      </Header>
+      <PostListing postEdges={formattedPopularPosts} />
 
-        <Header style={{ marginBottom: '5px' }}>
-          <h2>Open Source Projects</h2>
-        </Header>
+      <Header style={{ marginBottom: '5px' }}>
+        <h2>Open Source Projects</h2>
+      </Header>
 
-        {projects.map((p, i) => (
-          // eslint-disable-next-line react/no-array-index-key
-          <ProjectContainer key={i}>
-            <Icon href={p.website}>
-              {p.icon} {p.name}
-            </Icon>
-            <Description>{p.shortDescription}</Description>
-            <ProjectLinkContainer>
-              {p.github && <ProjectLink href={p.github}>Source Code</ProjectLink>}
-              {p.website && <ProjectLink href={p.website}>Link</ProjectLink>}
-            </ProjectLinkContainer>
-          </ProjectContainer>
-        ))}
-
-        <Header style={{ marginBottom: '5px' }}>
-          <h2>Newsletter</h2>
-        </Header>
-        <NewsletterDescription>Don&apos;t miss out on my new stuff!</NewsletterDescription>
-        <NewsletterButton />
-      </Layout>
-    </>
+      {projects.map((p, i) => (
+        // eslint-disable-next-line react/no-array-index-key
+        <ProjectContainer key={i}>
+          <Icon href={p.website}>
+            {p.icon} {p.name}
+          </Icon>
+          <Description>{p.shortDescription}</Description>
+          <ProjectLinkContainer>
+            {p.github && <ProjectLink href={p.github}>Source Code</ProjectLink>}
+            {p.website && <ProjectLink href={p.website}>Link</ProjectLink>}
+          </ProjectLinkContainer>
+        </ProjectContainer>
+      ))}
+    </Layout>
   );
 };
 

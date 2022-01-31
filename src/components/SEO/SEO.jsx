@@ -2,6 +2,7 @@ import React from 'react';
 import Helmet from 'react-helmet';
 import urljoin from 'url-join';
 import moment from 'moment';
+import { getSrc } from 'gatsby-plugin-image';
 import config from '../../../data/site-config';
 
 const SEO = ({ postNode, postPath, postSEO }) => {
@@ -14,7 +15,7 @@ const SEO = ({ postNode, postPath, postSEO }) => {
     const postMeta = postNode.frontmatter;
     ({ title } = postMeta);
     description = postMeta.description ? postMeta.description : postNode.excerpt;
-    image = postMeta.cover ? postMeta.cover.childImageSharp.fluid.src : '';
+    image = postMeta.cover ? getSrc(postMeta.cover) : '';
     postURL = urljoin(config.siteUrl, config.pathPrefix, postPath);
   } else {
     title = config.siteTitle;
