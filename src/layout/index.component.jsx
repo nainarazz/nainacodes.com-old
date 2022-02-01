@@ -18,7 +18,7 @@ const GlobalStyle = createGlobalStyle`
     body {
         margin: 0;
         padding: 0;
-        font-family: 'Roboto Slab';
+        font-family: 'Open Sans';
         color: ${themeColor.color.body};
     }
 
